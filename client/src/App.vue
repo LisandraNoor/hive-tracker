@@ -1,14 +1,24 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/register">Register</router-link>
-    </div>
-    <router-view/>
+    <PageHeader/>
+    <h1>Home</h1>
+    <b-container>
+      <router-view/>
+    </b-container>
   </div>
 </template>
 
-<style lang="scss">
+<script>
+import PageHeader from '@/components/Header.vue'
+export default {
+  name: 'app',
+  components: {
+    PageHeader
+  }
+}
+</script>
+
+<style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -18,12 +28,12 @@
 }
 #nav {
   padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+}
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
-  <div class="register-component">
-    <h1>Register</h1>
+  <div class="login-view-component">
+    <h1>Login</h1>
     <b-form>
-      <b-form-group label="Email:">
+      <b-form-group id="input-group-2" label="Email:">
         <b-form-input
           name="email"
           id="email"
@@ -15,20 +15,19 @@
         <b-form-input
           name="password"
           id="password"
-          type="password"
           v-model="password"
+          type="password"
           required
         ></b-form-input>
       </b-form-group>
       <div class="error" v-html="error"/>
-      <b-button variant="info" @click="register">Register</b-button>
+      <b-button variant="info" @click="login">Login</b-button>
     </b-form>
   </div>
 </template>
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
-
 export default {
   data () {
     return {
@@ -38,9 +37,9 @@ export default {
     }
   },
   methods: {
-    async register () {
+    async login () {
       try {
-        const response = await AuthenticationService.register({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
@@ -54,7 +53,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   .error {
     color: red;
   }
