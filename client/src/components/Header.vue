@@ -1,5 +1,5 @@
 <template>
-    <div class="header-view-component">
+    <div class="header-component">
       <b-navbar toggleable="lg" type="dark" variant="info">
         <router-link :to="`/`">
           <b-navbar-brand href="/">HiveTracker</b-navbar-brand>
