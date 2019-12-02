@@ -1,29 +1,29 @@
 <template>
-  <div class="treatment-component">
+  <div class="add-feeding-component">
     <b-form @submit="onSubmit">
       <b-form-group id="date" label="Kuupäev">
         <b-form-input
           id="date"
-          v-model="treatment.date"
+          v-model="feeding.date"
           type="date"
           required
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="type" label="Ravim">
+      <b-form-group id="type" label="Sööda tüüp">
         <b-form-select
           id="type"
-          v-model="treatment.type"
-          :options="treatment.types"
+          v-model="feeding.type"
+          :options="feeding.types"
           required
         ></b-form-select>
       </b-form-group>
 
-      <b-form-group id="amount" label="Doos">
+      <b-form-group id="amount" label="Kogus">
         <b-form-input
           id="amount"
-          v-model="treatment.amount"
-          type="number"
+          v-model="feeding.amount"
+          type="text"
           required
         ></b-form-input>
       </b-form-group>
@@ -34,18 +34,18 @@
 </template>
 
 <script>
-import TreatmentService from '@/services/TreatmentService'
+import FeedingService from '@/services/FeedingService'
 
 export default {
   data () {
     return {
-      treatment: {
+      feeding: {
         date: null,
         type: null,
         types: [
           {value: null, text: 'Valige tüüp'},
-          {value: 'oblikhape', text: 'Oblikhape'},
-          {value: 'ma ei tea', text: 'Pärast otsin'}
+          {value: 'suhkrusiirup', text: 'Suhkrusiirup'},
+          {value: 'Pärmi asi', text: 'Pärmi asi'}
         ],
         amount: null
       }
@@ -54,10 +54,8 @@ export default {
   methods: {
     async onSubmit () {
       try {
-        await TreatmentService.post(this.treatment)
-        this.$router.push({
-          name: 'treatment'
-        })
+        await FeedingService.post(this.feeding)
+        this.$router.push('/feedings')
       } catch (err) {
         console.log(err)
       }

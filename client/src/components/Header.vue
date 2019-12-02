@@ -1,44 +1,74 @@
 <template>
-    <div class="header-component">
-      <b-navbar toggleable="lg" type="dark" variant="info">
-        <router-link :to="`/`">
-          <b-navbar-brand href="/">HiveTracker</b-navbar-brand>
+  <div class="header-component">
+    <b-navbar toggleable="lg" type="dark" variant="info">
+      <router-link :to="`/`">
+        <b-navbar-brand href="/">HiveTracker</b-navbar-brand>
+        <router-link :to="`/hives`">
+          <b-button
+            variant="info"
+            size="md"
+            class="pb-2"
+            type="submit"
+            v-if="$store.state.isUserLoggedIn"
+            >Tarud
+          </b-button>
         </router-link>
-        <b-navbar-nav class="ml-auto">
-          <router-link :to="`/login`">
-            <b-button
-              variant="info"
-              size="md"
-              class="pb-2"
-              type="submit"
-              v-if="!$store.state.isUserLoggedIn"
-              >Login
-            </b-button>
-          </router-link>
-          <router-link :to="`/register`">
-            <b-button
-              variant="info"
-              size="md"
-              class="pb-2"
-              type="submit"
-              v-if="!$store.state.isUserLoggedIn"
-              >Register
-            </b-button>
-          </router-link>
-          <router-link :to="`/`">
-            <b-button
-              variant="info"
-              size="md"
-              class="pb-2"
-              type="submit"
-              @click="logout"
-              v-if="$store.state.isUserLoggedIn"
-              >Log out
-            </b-button>
-          </router-link>
-        </b-navbar-nav>
-      </b-navbar>
-    </div>
+        <router-link :to="`/bookkeeping`">
+          <b-button
+            variant="info"
+            size="md"
+            class="pb-2"
+            type="submit"
+            v-if="$store.state.isUserLoggedIn"
+            >Raamatupidamine
+          </b-button>
+        </router-link>
+        <router-link :to="`/search`">
+          <b-button
+            variant="info"
+            size="md"
+            class="pb-2"
+            type="submit"
+            v-if="$store.state.isUserLoggedIn"
+            >Andmete ülevaade
+          </b-button>
+        </router-link>
+      </router-link>
+      <b-navbar-nav class="ml-auto">
+        <router-link :to="`/login`">
+          <b-button
+            variant="info"
+            size="md"
+            class="pb-2"
+            type="submit"
+            v-if="!$store.state.isUserLoggedIn"
+            >Logi sisse
+          </b-button>
+        </router-link>
+        <router-link :to="`/register`">
+          <b-button
+            variant="info"
+            size="md"
+            class="pb-2"
+            type="submit"
+            v-if="!$store.state.isUserLoggedIn"
+            >Registreeri
+          </b-button>
+        </router-link>
+        <router-link :to="`/`">
+          <b-button
+            variant="info"
+            size="md"
+            class="pb-2"
+            type="submit"
+            @click="logout"
+            v-if="$store.state.isUserLoggedIn"
+            >Logi välja
+          </b-button>
+        </router-link>
+      </b-navbar-nav>
+    </b-navbar>
+  </div>
 </template>
 
 <script>

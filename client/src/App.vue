@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <PageHeader/>
-    <h1>Home</h1>
     <b-container>
       <router-view/>
     </b-container>
