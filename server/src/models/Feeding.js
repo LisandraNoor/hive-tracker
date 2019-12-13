@@ -4,5 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.STRING,
     amount: DataTypes.INTEGER
   })
+  Feeding.associate = function (models) {
+    Feeding.belongsTo(models.User)
+    Feeding.belongsTo(models.Hive)
+  }
   return Feeding
 }

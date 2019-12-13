@@ -3,5 +3,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     type: DataTypes.STRING
   })
+  Hive.associate = function (models) {
+    Hive.belongsTo(models.User)
+  }
   return Hive
 }

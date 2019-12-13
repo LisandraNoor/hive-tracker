@@ -3,8 +3,12 @@ const {Bookkeeping} = require('../models')
 module.exports = {
   async index (req, res) {
     try {
+      const {userId} = req.query
+
       const bookkeepings = await Bookkeeping.findAll({
-        limit:  100
+        where: {
+          UserId: userId
+        }
       })
       res.send(bookkeepings)
     } catch (err) {

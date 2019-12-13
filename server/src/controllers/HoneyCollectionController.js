@@ -3,8 +3,12 @@ const {HoneyCollection} = require('../models')
 module.exports = {
   async index (req, res) {
     try {
+      const {userId} = req.query
+
       const honeycollection = await HoneyCollection.findAll({
-        limit:  100
+        where: {
+          UserId: userId
+        }
       })
       res.send(honeycollection)
     } catch (err) {

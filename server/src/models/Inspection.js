@@ -30,5 +30,9 @@ module.exports = (sequelize, DataTypes) => {
     haue: DataTypes.STRING,
     haueAmount: DataTypes.STRING
   })
+  Inspection.associate = function (models) {
+    Inspection.belongsTo(models.User)
+    Inspection.belongsTo(models.Hive)
+  }
   return Inspection
 }

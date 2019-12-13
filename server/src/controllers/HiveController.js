@@ -3,8 +3,12 @@ const {Hive} = require('../models')
 module.exports = {
   async index (req, res) {
     try {
+      const {userId} = req.query
+      
       const hives = await Hive.findAll({
-        limit:  100
+        where: {
+          UserId: userId
+        }
       })
       res.send(hives)
     } catch (err) {

@@ -3,5 +3,8 @@ module.exports = (sequelize, DataTypes) => {
     date: DataTypes.DATE,
     amount: DataTypes.INTEGER
   })
+  HoneyCollection.associate = function (models) {
+    HoneyCollection.belongsTo(models.User)
+  }
   return HoneyCollection
 }

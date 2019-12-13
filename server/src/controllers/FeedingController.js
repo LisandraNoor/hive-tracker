@@ -3,8 +3,13 @@ const {Feeding} = require('../models')
 module.exports = {
   async index (req, res) {
     try {
+      const {userId, hiveId} = req.query
+      
       const feedings = await Feeding.findAll({
-        limit:  100
+        where: {
+          UserId: userId,
+          HiveId: hiveId
+        }
       })
       res.send(feedings)
     } catch (err) {
