@@ -1,23 +1,32 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Register from './components/Register'
-import Login from './components/Login'
-import BookKeeping from './components/BookKeeping'
-import Search from './components/Search'
-import Hives from './components/Hives'
-import HiveDetails from './components/HiveDetails'
-import Treatments from './components/Treatments'
-import Feedings from './components/Feedings'
-import Inspections from './components/Inspections'
-import Inspection from './components/Inspection'
-
-import AddHoneyCollection from './components/details/AddHoneyCollection'
-import AddInspection from './components/details/AddInspection'
-import AddTreatment from './components/details/AddTreatment'
-import AddFeeding from './components/details/AddFeeding'
-import AddBookkeeping from './components/details/AddBookkeeping'
-import AddHive from './components/details/AddHive'
+import Register from './views/Register'
+import Login from './views/Login'
+import BookKeepings from './views/BookKeepings'
+import Search from './views/Search'
+import Hives from './views/Hives'
+import Treatments from './views/Treatments'
+import Feedings from './views/Feedings'
+import Inspections from './views/Inspections'
+import HoneyCollections from './views/HoneyCollections'
+// view
+import Inspection from './views/view/Inspection'
+import HiveDetails from './views/view/HiveDetails'
+// create
+import AddHoneyCollection from './views/create/AddHoneyCollection'
+import AddInspection from './views/create/AddInspection'
+import AddTreatment from './views/create/AddTreatment'
+import AddFeeding from './views/create/AddFeeding'
+import AddBookkeeping from './views/create/AddBookkeeping'
+import AddHive from './views/create/AddHive'
+// edit
+import EditHoneyCollection from './views/edit/EditHoneyCollection'
+import EditInspection from './views/edit/EditInspection'
+import EditTreatment from './views/edit/EditTreatment'
+import EditFeeding from './views/edit/EditFeeding'
+import EditBookkeeping from './views/edit/EditBookkeeping'
+import EditHive from './views/edit/EditHive'
 
 Vue.use(Router)
 
@@ -41,10 +50,11 @@ export default new Router({
       component: Search
     },
     {
-      path: '/bookkeeping',
-      name: 'bookkeeping',
-      component: BookKeeping
+      path: '/login',
+      name: 'login',
+      component: Login
     },
+    // hive
     {
       path: '/hives',
       name: 'hives',
@@ -56,19 +66,20 @@ export default new Router({
       component: HiveDetails
     },
     {
-      path: '/inspection/:inspectionId',
-      name: 'inspection',
-      component: Inspection
+      path: '/addhive',
+      name: 'addhive',
+      component: AddHive
     },
     {
-      path: '/login',
-      name: 'login',
-      component: Login
+      path: '/hives/:hiveId/edit',
+      name: 'edithive',
+      component: EditHive
     },
+    // treatment
     {
-      path: '/hivedetails/addinspection',
-      name: 'addinspection',
-      component: AddInspection
+      path: '/treatments',
+      name: 'treatments',
+      component: Treatments
     },
     {
       path: '/hivedetails/addtreatment',
@@ -76,14 +87,15 @@ export default new Router({
       component: AddTreatment
     },
     {
-      path: '/addhoneycollection',
-      name: 'addhoneycollection',
-      component: AddHoneyCollection
+      path: '/treatments/:treatmentId/edit',
+      name: 'edittreatment',
+      component: EditTreatment
     },
+    // bookkeeping
     {
-      path: '/hivedetails/addfeeding',
-      name: 'addfeeding',
-      component: AddFeeding
+      path: '/bookkeepings',
+      name: 'bookkeepings',
+      component: BookKeepings
     },
     {
       path: '/bookkeeping/addbookkeeping',
@@ -91,24 +103,62 @@ export default new Router({
       component: AddBookkeeping
     },
     {
-      path: '/feedings',
-      name: 'feedings',
-      component: Feedings
+      path: '/bookkeepings/:bookkeepingId/edit',
+      name: 'editbookkeeping',
+      component: EditBookkeeping
     },
-    {
-      path: '/treatments',
-      name: 'treatments',
-      component: Treatments
-    },
+    // inspection
     {
       path: '/inspections',
       name: 'inspections',
       component: Inspections
     },
     {
-      path: '/addhive',
-      name: 'addhive',
-      component: AddHive
+      path: '/inspections/:inspectionId',
+      name: 'inspection',
+      component: Inspection
+    },
+    {
+      path: '/hivedetails/addinspection',
+      name: 'addinspection',
+      component: AddInspection
+    },
+    {
+      path: '/inspections/:inspectionId/edit',
+      name: 'editinspection',
+      component: EditInspection
+    },
+    // feeding
+    {
+      path: '/feedings',
+      name: 'feedings',
+      component: Feedings
+    },
+    {
+      path: '/hivedetails/addfeeding',
+      name: 'addfeeding',
+      component: AddFeeding
+    },
+    {
+      path: '/feedings/:feedingId/edit',
+      name: 'editfeeding',
+      component: EditFeeding
+    },
+    // honeycollection
+    {
+      path: '/honeycollections',
+      name: 'honeycollections',
+      component: HoneyCollections
+    },
+    {
+      path: '/addhoneycollection',
+      name: 'addhoneycollection',
+      component: AddHoneyCollection
+    },
+    {
+      path: '/honeycollections/:honeycollectionId/edit',
+      name: 'edithoneycollection',
+      component: EditHoneyCollection
     }
   ]
 })

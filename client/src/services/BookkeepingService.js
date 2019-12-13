@@ -6,5 +6,11 @@ export default {
   },
   post (bookkeeping) {
     return Api().post('bookkeepings', bookkeeping)
+  },
+  show (bookkeepingId) {
+    return Api().get(`bookkeepings/${bookkeepingId}`)
+  },
+  put (bookkeeping) {
+    return Api().put(`bookkeepings/${bookkeeping.id}`, bookkeeping)
   }
 }

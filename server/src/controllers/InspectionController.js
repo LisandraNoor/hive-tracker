@@ -9,7 +9,7 @@ module.exports = {
       res.send(inspections)
     } catch (err) {
       res.status(500).send({
-        error: 'An error has occured trying to getting all songs'
+        error: 'An error has occured trying to getting all inspections'
       })
     }
   },
@@ -19,7 +19,31 @@ module.exports = {
       res.send(inspection)
     } catch (err) {
       res.status(500).send({
-        error: 'An error has occured while trying to create a song'
+        error: 'An error has occured while trying to create a inspection'
+      })
+    }
+  },
+  async show (req, res) {
+    try {
+      const inspection = await Inspection.findByPk(req.params.inspectionId)
+      res.send(inspection)
+    } catch (err) {
+      res.status(500).send({
+        error: 'An error has occured trying to get inspection'
+      })
+    }
+  },
+  async put (req, res) {
+    try {
+      const inspection = await Inspection.update(req.body, {
+        where: {
+          id: req.params.inspectionId
+        }
+      })
+      res.send(inspection)
+    } catch (err) {
+      res.status(500).send({
+        error: 'An error has occured while trying to update a inspection'
       })
     }
   }

@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     //misc
     date: DataTypes.DATE,
     attitude: DataTypes.STRING,
-    strenth: DataTypes.STRING,
+    strength: DataTypes.STRING,
     feedAmount: DataTypes.STRING,
     frameCoverage: DataTypes.STRING,
     //queen

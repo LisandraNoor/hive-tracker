@@ -9,7 +9,17 @@ module.exports = {
       res.send(hives)
     } catch (err) {
       res.status(500).send({
-        error: 'An error has occured trying to get all songs'
+        error: 'An error has occured trying to get all hives'
+      })
+    }
+  },
+  async show (req, res) {
+    try {
+      const hive = await Hive.findByPk(req.params.hiveId)
+      res.send(hive)
+    } catch (err) {
+      res.status(500).send({
+        error: 'An error has occured trying to get hive'
       })
     }
   },
@@ -19,7 +29,21 @@ module.exports = {
       res.send(hive)
     } catch (err) {
       res.status(500).send({
-        error: 'An error has occured while trying to create a song'
+        error: 'An error has occured while trying to create a hive'
+      })
+    }
+  },
+  async put (req, res) {
+    try {
+      const hive = await Hive.update(req.body, {
+        where: {
+          id: req.params.hiveId
+        }
+      })
+      res.send(hive)
+    } catch (err) {
+      res.status(500).send({
+        error: 'An error has occured while trying to update a hive'
       })
     }
   }

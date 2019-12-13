@@ -6,5 +6,11 @@ export default {
   },
   post (hive) {
     return Api().post('hives', hive)
+  },
+  show (hiveId) {
+    return Api().get(`hives/${hiveId}`)
+  },
+  put (hive) {
+    return Api().put(`hives/${hive.id}`, hive)
   }
 }

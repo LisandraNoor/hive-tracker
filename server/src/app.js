@@ -17,7 +17,7 @@ app.use(cors())
 require('./routes')(app)
 
 // setting up sql server to keep data in
-sequelize.sync() //{force: true} - drops all tables in database
+sequelize.sync() // {force: true} - drops all tables in database
   .then(() => {
 
     app.listen(config.port)
