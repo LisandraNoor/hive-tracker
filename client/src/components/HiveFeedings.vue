@@ -5,18 +5,20 @@
       <p>{{ feeding.date }}</p>
       <p>{{ feeding.type }}</p>
       <p>{{ feeding.amount }}</p>
-      <router-link :to="`/feedings/${feeding.id}/edit`"><b-button>Muuda</b-button></router-link>
+      <router-link :to="`/hives/${hive.id}/feedings/${feeding.id}/edit`"><b-button>Muuda</b-button></router-link>
     </div>
   </div>
 </template>
 
 <script>
+import HiveService from '@/services/HiveService'
 import FeedingService from '@/services/FeedingService'
 import { mapState } from 'vuex'
 
 export default {
   data () {
     return {
+      hive: {},
       feedings: null
     }
   },
@@ -28,7 +30,11 @@ export default {
   },
   async mounted () {
     if (this.isUserLoggedIn) {
-      this.feedings = (await FeedingService.index()).data
+      const hiveId = this.$store.state.route.params.hiveId
+      this.hive = (await HiveService.show(hiveId)).data
+      this.feedings = (await FeedingService.index({
+        hiveId: hiveId
+      })).data
     }
   }
 }

@@ -14,6 +14,8 @@ app.use(bodyParser.json())
 //allow any host or client to use
 app.use(cors())
 
+require('./passport')
+
 require('./routes')(app)
 
 // setting up sql server to keep data in

@@ -1,11 +1,16 @@
 import Api from '@/services/Api'
 
 export default {
-  index () {
-    return Api().get('inspections')
+  index (inspection) {
+    return Api().get('inspections', {
+      params: inspection
+    })
   },
   post (inspection) {
     return Api().post('inspections', inspection)
+  },
+  delete (treatmentId) {
+    return Api().delete(`treatments/${treatmentId}`)
   },
   show (inspectionId) {
     return Api().get(`inspections/${inspectionId}`)

@@ -275,7 +275,7 @@ export default {
         furrosAmount: null,
         // haue
         haue: '', // Jah/ei radio button
-        haueAmount: null,
+        haueAmount: null
       }
     }
   },

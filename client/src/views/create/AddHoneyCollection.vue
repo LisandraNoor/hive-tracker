@@ -41,7 +41,10 @@ export default {
   methods: {
     onSubmit () {
       try {
-        HoneyCollectionService.post(this.honeycollection)
+        HoneyCollectionService.post({
+          honeycollection: this.honeycollection,
+          userId: this.$store.state.user.id
+        })
         this.$router.push('/honeycollections')
       } catch (err) {
         console.log(err)

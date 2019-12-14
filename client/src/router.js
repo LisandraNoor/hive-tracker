@@ -4,7 +4,7 @@ import Home from './views/Home.vue'
 import Register from './views/Register'
 import Login from './views/Login'
 import BookKeepings from './views/BookKeepings'
-import Search from './views/Search'
+// import Search from './views/Search'
 import Hives from './views/Hives'
 import Treatments from './views/Treatments'
 import Feedings from './views/Feedings'
@@ -44,11 +44,11 @@ export default new Router({
       name: 'register',
       component: Register
     },
-    {
+    /* {
       path: '/search',
       name: 'search',
       component: Search
-    },
+    }, */
     {
       path: '/login',
       name: 'login',
@@ -82,12 +82,12 @@ export default new Router({
       component: Treatments
     },
     {
-      path: '/hivedetails/addtreatment',
+      path: '/hives/:hiveId/addtreatment',
       name: 'addtreatment',
       component: AddTreatment
     },
     {
-      path: '/treatments/:treatmentId/edit',
+      path: '/hives/:hiveId/treatments/:treatmentId/edit',
       name: 'edittreatment',
       component: EditTreatment
     },
@@ -98,7 +98,7 @@ export default new Router({
       component: BookKeepings
     },
     {
-      path: '/bookkeeping/addbookkeeping',
+      path: '/bookkeepings/addbookkeeping',
       name: 'addbookkeeping',
       component: AddBookkeeping
     },
@@ -114,17 +114,17 @@ export default new Router({
       component: Inspections
     },
     {
-      path: '/inspections/:inspectionId',
+      path: '/hives/:hiveId/inspections/:inspectionId',
       name: 'inspection',
       component: Inspection
     },
     {
-      path: '/hivedetails/addinspection',
+      path: '/hives/:hiveId/addinspection',
       name: 'addinspection',
       component: AddInspection
     },
     {
-      path: '/inspections/:inspectionId/edit',
+      path: '/hives/:hiveId/inspections/:inspectionId/edit',
       name: 'editinspection',
       component: EditInspection
     },
@@ -135,12 +135,12 @@ export default new Router({
       component: Feedings
     },
     {
-      path: '/hivedetails/addfeeding',
+      path: '/hives/:hiveId/addfeeding',
       name: 'addfeeding',
       component: AddFeeding
     },
     {
-      path: '/feedings/:feedingId/edit',
+      path: '/hives/:hiveId/feedings/:feedingId/edit',
       name: 'editfeeding',
       component: EditFeeding
     },
@@ -151,7 +151,7 @@ export default new Router({
       component: HoneyCollections
     },
     {
-      path: '/addhoneycollection',
+      path: '/honeycollections/addhoneycollection',
       name: 'addhoneycollection',
       component: AddHoneyCollection
     },

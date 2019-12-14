@@ -55,8 +55,8 @@ export default {
         type: null,
         types: [
           { value: null, text: 'Vali' },
-          { value: 'Sissetulek', text: 'Sissetulek' },
-          { value: 'Väljaminek', text: 'Väljaminek' }
+          { value: 'sissetulek', text: 'Sissetulek' },
+          { value: 'valjaminek', text: 'Väljaminek' }
         ],
         amount: null
       }
@@ -65,7 +65,10 @@ export default {
   methods: {
     onSubmit () {
       try {
-        BookkeepingService.post(this.bookkeeping)
+        BookkeepingService.post({
+          bookkeeping: this.bookkeeping,
+          userId: this.$store.state.user.id
+        })
         this.$router.push('/bookkeepings')
       } catch (err) {
         console.log(err)

@@ -45,7 +45,7 @@ export default {
         types: [
           { value: null, text: 'Valige tüüp' },
           { value: 'suhkrusiirup', text: 'Suhkrusiirup' },
-          { value: 'Pärmi asi', text: 'Pärmi asi' }
+          { value: 'parm', text: 'Pärmi asi' }
         ],
         amount: null
       }
@@ -54,8 +54,14 @@ export default {
   methods: {
     onSubmit () {
       try {
-        FeedingService.post(this.feeding)
-        this.$router.push('/feedings')
+        FeedingService.post({
+          feeding: this.feeding,
+          userId: this.$store.state.user.id,
+          hiveId: this.$store.state.route.params.hiveId
+        })
+        this.$router.push({
+          path: '/hives'
+        })
       } catch (err) {
         console.log(err)
       }

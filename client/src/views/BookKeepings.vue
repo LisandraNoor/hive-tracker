@@ -7,7 +7,7 @@
         <option>Väljaminekud</option>
       </select>
     </div>
-    <router-link :to="`/bookkeeping/addbookkeeping`"><b-button id="addBookkeeping" variant="dark">+</b-button></router-link>
+    <router-link :to="`/bookkeepings/addbookkeeping`"><b-button id="addBookkeeping" variant="dark">+</b-button></router-link>
     <table>
       <tr v-for="bookkeeping in bookkeepings" :key="bookkeeping.id">
         <td>{{ bookkeeping.date }}</td>
@@ -17,37 +17,28 @@
         <td><router-link :to="`/bookkeepings/${bookkeeping.id}/edit`"><b-button>Muuda</b-button></router-link></td>
       </tr>
     </table>
-    <div>{{ bookkeepings.total }}</div>
   </div>
 </template>
 
 <script>
 import BookkeepingService from '@/services/BookkeepingService'
+import { mapState } from 'vuex'
 
 export default {
   data () {
     return {
-      bookkeepings: [
-        {
-          date: '',
-          type: '',
-          name: '',
-          amount: 0,
-          total: 0
-        }
-      ]
+      bookkeepings: null
     }
   },
+  computed: {
+    ...mapState([
+      'isUserLoggedIn',
+      'user'
+    ])
+  },
   async mounted () {
-    this.bookkeepings = (await BookkeepingService.index()).data
-    /* this.bookkeepings.type = type
-    this.bookkeepings.amount = amount */
-    if (this.type === 'Sissetulek') {
-      this.amount += this.total
-      console.log(this.type + this.total)
-    } else if (this.type === 'Väljaminek') {
-      // this.amount -= this.total
-      console.log(this.type + this.total)
+    if (this.isUserLoggedIn) {
+      this.bookkeepings = (await BookkeepingService.index()).data
     }
   }
 }

@@ -273,7 +273,11 @@ export default {
   methods: {
     onSubmit () {
       try {
-        InspectionService.post(this.inspection)
+        InspectionService.post({
+          inspection: this.inspection,
+          userId: this.$store.state.user.id,
+          hiveId: this.$store.state.route.params.hiveId
+        })
         this.$router.push('/inspections')
       } catch (err) {
         console.log(err)

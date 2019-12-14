@@ -60,7 +60,6 @@ export default {
   async mounted () {
     const feedingId = this.$store.state.route.params.feedingId
     this.feeding = (await FeedingService.show(feedingId)).data
-    console.log(feedingId)
   }
 }
 </script>

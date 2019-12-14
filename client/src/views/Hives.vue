@@ -10,6 +10,7 @@
 
 <script>
 import HiveService from '@/services/HiveService'
+import { mapState } from 'vuex'
 
 export default {
   data () {
@@ -17,8 +18,16 @@ export default {
       hives: null
     }
   },
+  computed: {
+    ...mapState([
+      'isUserLoggedIn',
+      'user'
+    ])
+  },
   async mounted () {
-    this.hives = (await HiveService.index()).data
+    if (this.isUserLoggedIn) {
+      this.hives = (await HiveService.index()).data
+    }
   }
 }
 </script>

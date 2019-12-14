@@ -1,11 +1,16 @@
 import Api from '@/services/Api'
 
 export default {
-  index () {
-    return Api().get('honeycollections')
+  index (honeycollection) {
+    return Api().get('honeycollections', {
+      params: honeycollection
+    })
   },
   post (honeycollection) {
     return Api().post('honeycollections', honeycollection)
+  },
+  delete (honeycollectionId) {
+    return Api().delete(`honeycollections/${honeycollectionId}`)
   },
   show (honeycollectionId) {
     return Api().get(`honeycollections/${honeycollectionId}`)

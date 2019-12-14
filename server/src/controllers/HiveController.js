@@ -3,13 +3,38 @@ const {Hive} = require('../models')
 module.exports = {
   async index (req, res) {
     try {
-      const {userId} = req.query
-      
+      const userId = req.user.id
+      // const {feedingId} = req.query
+      // const {treatmentId} = req.query
+      // const {inspectionId} = req.query
+      const where = {
+        UserId: userId
+      }
+      /* if (feedingId) {
+        where.FeedingId = feedingId
+      }
+      /* if (treatmentId) {
+        where.TreatmentId = treatmentId
+      }
+      if (inspectionId) {
+        where.InspectionId = inspectionId
+      } */
       const hives = await Hive.findAll({
-        where: {
-          UserId: userId
-        }
+        where: where
+        /*include: [
+          {
+            model: Feeding
+            // model: Treatment,
+            // model: Inspection
+          }
+        ]*/
       })
+        /*.map(hive => hive.toJSON())
+        .map(hive => _.extend(
+          {},
+          // hive.Feeding,
+          hive
+        ))*/
       res.send(hives)
     } catch (err) {
       res.status(500).send({
@@ -29,7 +54,13 @@ module.exports = {
   },
   async post (req, res) {
     try {
-      const hive = await Hive.create(req.body)
+      const userId = req.body.userId
+      
+      const hive = await Hive.create({
+        name: req.body.hive.name,
+        type: req.body.hive.type,
+        UserId: userId
+      })
       res.send(hive)
     } catch (err) {
       res.status(500).send({
@@ -48,6 +79,24 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: 'An error has occured while trying to update a hive'
+      })
+    }
+  },
+  async remove (req, res) {
+    try {
+      const userId = req.user.id
+      const {hiveId} = req.params
+      const hive = await Hive.findOne({
+        where: {
+          id: hiveId,
+          UserId: userId
+        }
+      })
+      await hive.destroy()
+      res.send(hive)
+    } catch (err) {
+      res.status(500).send({
+        error: 'an error has occured trying to delete the bookmark'
       })
     }
   }

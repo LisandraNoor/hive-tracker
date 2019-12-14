@@ -1,0 +1,16 @@
+[
+  {
+    "UserId": 1,
+    "HiveId": 1,
+    "date": null,
+    "type": "suhkrusiirup",
+    "amount": 150
+  },
+  {
+    "UserId": 1,
+    "HiveId": 2,
+    "date": null,
+    "type": "parm",
+    "amount": 300
+  }
+]

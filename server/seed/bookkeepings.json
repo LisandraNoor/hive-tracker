@@ -1,0 +1,16 @@
+[
+  {
+    "UserId": 1,
+    "date": null,
+    "name": "Vurr",
+    "type": "sissetulek",
+    "amount": 15
+  },
+  {
+    "UserId": 1,
+    "date": null,
+    "name": "Kostüüm",
+    "type": "valjaminek",
+    "amount": 30
+  }
+]

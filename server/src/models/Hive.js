@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   })
   Hive.associate = function (models) {
     Hive.belongsTo(models.User)
+    // Hive.belongsTo(models.Feeding)
   }
   return Hive
 }

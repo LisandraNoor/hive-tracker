@@ -13,7 +13,17 @@
             >Tarud
           </b-button>
         </router-link>
-        <router-link :to="`/bookkeeping`">
+        <router-link :to="`/honeycollections`">
+          <b-button
+            variant="info"
+            size="md"
+            class="pb-2"
+            type="submit"
+            v-if="$store.state.isUserLoggedIn"
+            >Mee võtmised
+          </b-button>
+        </router-link>
+        <router-link :to="`/bookkeepings`">
           <b-button
             variant="info"
             size="md"
@@ -21,6 +31,26 @@
             type="submit"
             v-if="$store.state.isUserLoggedIn"
             >Raamatupidamine
+          </b-button>
+        </router-link>
+        <router-link :to="`/feedings`">
+          <b-button
+            variant="info"
+            size="md"
+            class="pb-2"
+            type="submit"
+            v-if="$store.state.isUserLoggedIn"
+            >Söötmised
+          </b-button>
+        </router-link>
+        <router-link :to="`/treatments`">
+          <b-button
+            variant="info"
+            size="md"
+            class="pb-2"
+            type="submit"
+            v-if="$store.state.isUserLoggedIn"
+            >Ravimised
           </b-button>
         </router-link>
         <router-link :to="`/search`">

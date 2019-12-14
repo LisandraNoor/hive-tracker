@@ -54,8 +54,12 @@ export default {
   methods: {
     onSubmit () {
       try {
-        TreatmentService.post(this.treatment)
-        this.$router.push('/treatments')
+        TreatmentService.post({
+          treatment: this.treatment,
+          userId: this.$store.state.user.id,
+          hiveId: this.$store.state.route.params.hiveId
+        })
+        this.$router.push('/hives')
       } catch (err) {
         console.log(err)
       }

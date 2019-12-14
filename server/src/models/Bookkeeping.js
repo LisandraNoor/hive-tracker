@@ -5,5 +5,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       amount: DataTypes.INTEGER
     })
+    Bookkeeping.associate = function (models) {
+      Bookkeeping.belongsTo(models.User)
+    }
     return Bookkeeping
   }

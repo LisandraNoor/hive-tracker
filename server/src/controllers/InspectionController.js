@@ -1,15 +1,24 @@
-const {Inspection} = require('../models')
+const {Inspection, Hive} = require('../models')
 
 module.exports = {
   async index (req, res) {
     try {
-      const {userId, hiveId} = req.query
+      const userId = req.user.id
+      const {hiveId} = req.query
+      const where = {
+        UserId: userId
+      }
+      if (hiveId) {
+        where.HiveId = hiveId
+      }
 
       const inspections = await Inspection.findAll({
-        where: {
-          UserId: userId,
-          HiveId: hiveId
-        }
+        where: where,
+        includes: [
+          {
+            model: Hive
+          }
+        ]
       })
       res.send(inspections)
     } catch (err) {
@@ -20,7 +29,31 @@ module.exports = {
   },
   async post (req, res) {
     try {
-      const inspection = await Inspection.create(req.body)
+      const inspection = await Inspection.create({
+        date: req.body.inspection.date,
+        attitude: req.body.inspection.attitude,
+        strength: req.body.inspection.strength,
+        feedAmount: req.body.inspection.feedAmount,
+        frameCoverage: req.body.inspection.frameCoverage,
+        queen: req.body.inspection.queen,
+        queenColor: req.body.inspection.queenColor,
+        stringFrame: req.body.inspection.stringFrame,
+        bottomFrame: req.body.inspection.bottomFrame,
+        fullFrame: req.body.inspection.fullFrame,
+        removedFramed: req.body.inspection.removedFramed,
+        degrees: req.body.inspection.degrees,
+        weather: req.body.inspection.weather,
+        eggs: req.body.inspection.eggs,
+        eggAmount: req.body.inspection.eggAmount,
+        disease: req.body.inspection.disease,
+        diseaseType: req.body.inspection.diseaseType,
+        furros: req.body.inspection.furros,
+        furrosAmount: req.body.inspection.furrosAmount,
+        haue: req.body.inspection.haue,
+        haueAmount: req.body.inspection.haueAmount,
+        UserId: req.body.userId,
+        HiveId: req.body.hiveId
+      })
       res.send(inspection)
     } catch (err) {
       res.status(500).send({
@@ -49,6 +82,24 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: 'An error has occured while trying to update a inspection'
+      })
+    }
+  },
+  async remove (req, res) {
+    try {
+      const userId = req.user.id
+      const {inspectionId} = req.params
+      const inspection = await Inspection.findOne({
+        where: {
+          id: inspectionId,
+          UserId: userId
+        }
+      })
+      await inspection.destroy()
+      res.send(inspection)
+    } catch (err) {
+      res.status(500).send({
+        error: 'an error has occured trying to delete the inspection'
       })
     }
   }

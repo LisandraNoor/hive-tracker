@@ -1,15 +1,24 @@
-const {Treatment} = require('../models')
+const {Treatment, Hive} = require('../models')
 
 module.exports = {
   async index (req, res) {
     try {
-      const {userId, hiveId} = req.query
+      const userId = req.user.id
+      const {hiveId} = req.query
+      const where = {
+        UserId: userId
+      }
+      if (hiveId) {
+        where.HiveId = hiveId
+      }
 
       const treatments = await Treatment.findAll({
-        where: {
-          UserId: userId,
-          HiveId: hiveId
-        }
+        where: where,
+        includes: [
+          {
+            model: Hive
+          }
+        ]
       })
       res.send(treatments)
     } catch (err) {
@@ -20,7 +29,13 @@ module.exports = {
   },
   async post (req, res) {
     try {
-      const treatment = await Treatment.create(req.body)
+      const treatment = await Treatment.create({
+        date: req.body.treatment.date,
+        type: req.body.treatment.type,
+        amount: req.body.treatment.amount,
+        UserId: req.body.userId,
+        HiveId: req.body.hiveId
+      })
       res.send(treatment)
     } catch (err) {
       res.status(500).send({
@@ -49,6 +64,24 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: 'An error has occured while trying to update a treatment'
+      })
+    }
+  },
+  async remove (req, res) {
+    try {
+      const userId = req.user.id
+      const {treatmentId} = req.params
+      const treatment = await Treatment.findOne({
+        where: {
+          id: treatmentId,
+          UserId: userId
+        }
+      })
+      await treatment.destroy()
+      res.send(treatment)
+    } catch (err) {
+      res.status(500).send({
+        error: 'an error has occured trying to delete the treatment'
       })
     }
   }

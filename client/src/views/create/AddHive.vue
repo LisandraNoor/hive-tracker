@@ -26,6 +26,7 @@
 
 <script>
 import HiveService from '@/services/HiveService'
+import { mapState } from 'vuex'
 
 export default {
   data () {
@@ -41,13 +42,24 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState([
+      'isUserLoggedIn',
+      'user'
+    ])
+  },
   methods: {
-    onSubmit () {
-      try {
-        HiveService.post(this.hive)
-        this.$router.push('/hives')
-      } catch (err) {
-        console.log(err)
+    async onSubmit () {
+      if (this.isUserLoggedIn) {
+        try {
+          await HiveService.post({
+            hive: this.hive,
+            userId: this.user.id
+          }).data
+          this.$router.push('/hives')
+        } catch (err) {
+          console.log(err)
+        }
       }
     }
   }

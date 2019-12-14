@@ -1,6 +1,6 @@
 <template>
   <div class="honeycollections-component">
-    <h1>Ravimised</h1>
+    <h1>Mee võtmised</h1>
     <table v-for="honeycollection in honeycollections" :key="honeycollection.id">
       <tr>
         <td>Kuupäev:</td>
@@ -14,20 +14,30 @@
         <td><router-link :to="`/honeycollections/${honeycollection.id}/edit`"><b-button>Muuda</b-button></router-link></td>
       </tr>
     </table>
+    <router-link :to="`/honeycollections/addhoneycollection`"><b-button id="addHoneyCollection" variant="dark">+</b-button></router-link>
   </div>
 </template>
 
 <script>
 import HoneyCollectionService from '@/services/HoneyCollectionService'
+import { mapState } from 'vuex'
 
 export default {
   data () {
     return {
-      honeycollections: []
+      honeycollections: null
     }
   },
+  computed: {
+    ...mapState([
+      'isUserLoggedIn',
+      'user'
+    ])
+  },
   async mounted () {
-    this.honeycollections = (await HoneyCollectionService.index()).data
+    if (this.isUserLoggedIn) {
+      this.honeycollections = (await HoneyCollectionService.index()).data
+    }
   }
 }
 </script>
