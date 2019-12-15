@@ -9,15 +9,24 @@
 
 <script>
 import InspectionService from '@/services/InspectionService'
+import { mapState } from 'vuex'
 
 export default {
   data () {
     return {
-      inspections: []
+      inspections: null
     }
   },
+  computed: {
+    ...mapState([
+      'isUserLoggedIn',
+      'user'
+    ])
+  },
   async mounted () {
-    this.inspections = (await InspectionService.index()).data
+    if (this.isUserLoggedIn) {
+      this.inspections = (await InspectionService.index()).data
+    }
   }
 }
 </script>

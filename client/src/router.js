@@ -4,7 +4,7 @@ import Home from './views/Home.vue'
 import Register from './views/Register'
 import Login from './views/Login'
 import BookKeepings from './views/BookKeepings'
-// import Search from './views/Search'
+import Search from './views/Search'
 import Hives from './views/Hives'
 import Treatments from './views/Treatments'
 import Feedings from './views/Feedings'
@@ -44,11 +44,11 @@ export default new Router({
       name: 'register',
       component: Register
     },
-    /* {
+    {
       path: '/search',
       name: 'search',
       component: Search
-    }, */
+    },
     {
       path: '/login',
       name: 'login',

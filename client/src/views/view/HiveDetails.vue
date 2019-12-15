@@ -28,8 +28,7 @@ export default {
   },
   data () {
     return {
-      hive: {},
-      feedings: null
+      hive: {}
     }
   },
   async mounted () {
