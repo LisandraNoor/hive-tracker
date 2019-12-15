@@ -36,8 +36,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'login',
+      component: Login
     },
     {
       path: '/register',
@@ -49,11 +49,11 @@ export default new Router({
       name: 'search',
       component: Search
     },
-    {
+    /* {
       path: '/login',
       name: 'login',
       component: Login
-    },
+    }, */
     // hive
     {
       path: '/hives',

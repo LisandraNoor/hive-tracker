@@ -65,7 +65,7 @@
         </router-link>
       </router-link>
       <b-navbar-nav class="ml-auto">
-        <router-link :to="`/login`">
+        <router-link :to="`/`">
           <b-button
             variant="info"
             size="md"
