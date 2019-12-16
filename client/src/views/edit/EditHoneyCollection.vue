@@ -2,13 +2,12 @@
   <div class="honey-collecting-component">
     <b-form @submit="onSubmit">
       <b-form-group id="date" label="Kuupäev">
-        <b-form-input
+        <date-picker
           id="date"
           v-model="honeycollection.date"
-          type="date"
+          format="DD/MM/YYYY"
           required
-          placeholder="dd/mm/yyyy"
-        ></b-form-input>
+        ></date-picker>
       </b-form-group>
 
       <b-form-group id="honeyamount" label="Kogus">
@@ -28,6 +27,8 @@
 
 <script>
 import HoneyCollectionService from '@/services/HoneyCollectionService'
+import DatePicker from 'vue2-datepicker'
+import 'vue2-datepicker/index.css'
 
 export default {
   data () {
@@ -37,6 +38,9 @@ export default {
         amount: null
       }
     }
+  },
+  components: {
+    DatePicker
   },
   methods: {
     onSubmit () {

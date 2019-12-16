@@ -3,13 +3,12 @@
     <b-form @submit="onSubmit">
       <!--misc-->
       <b-form-group id="date" label="Kuupäev">
-        <b-form-input
+        <date-picker
           id="date"
           v-model="inspection.date"
-          type="date"
+          format="DD/MM/YYYY"
           required
-          placeholder="dd/mm/yyyy"
-        ></b-form-input>
+        ></date-picker>
       </b-form-group>
 
       <b-form-group id="attitude" label="Mesilaste meeleolu">
@@ -170,6 +169,8 @@
 
 <script>
 import InspectionService from '@/services/InspectionService'
+import DatePicker from 'vue2-datepicker'
+import 'vue2-datepicker/index.css'
 
 export default {
   data () {
@@ -269,6 +270,9 @@ export default {
         ]
       }
     }
+  },
+  components: {
+    DatePicker
   },
   methods: {
     onSubmit () {
