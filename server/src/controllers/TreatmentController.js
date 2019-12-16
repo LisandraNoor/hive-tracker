@@ -68,9 +68,13 @@ module.exports = {
     }
   },
   async remove (req, res) {
+    
+    console.log('!!!!!!!', req.params)
     try {
       const userId = req.user.id
       const {treatmentId} = req.params
+      console.log('00000000000', userId)
+      console.log('11111111111', treatmentId)
       const treatment = await Treatment.findOne({
         where: {
           id: treatmentId,

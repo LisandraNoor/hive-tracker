@@ -23,15 +23,23 @@
 
 <script>
 import TreatmentService from '@/services/TreatmentService'
+import { mapState } from 'vuex'
 
 export default {
   data () {
     return {
-      treatments: []
+      treatments: [],
+      treatment: null
     }
   },
   async mounted () {
     this.treatments = (await TreatmentService.index()).data
+  },
+  computed: {
+    ...mapState([
+      'isUserLoggedIn',
+      'user'
+    ])
   }
 }
 </script>
