@@ -21,24 +21,45 @@
       <input type="checkbox">
       <p>Mesi</p>
     </div>
-    {{ dates }}
+    <ul id="sortbydate">
+      <li v-for="inspection in inspections" :key="inspection.id">
+        {{ inspection.date }}
+      </li>
+    </ul>
+    <button @click="getRecords()">getRecords</button>
   </div>
 </template>
 
 <script>
 import DatePicker from 'vue2-datepicker'
 import 'vue2-datepicker/index.css'
+import InspectionService from '@/services/InspectionService'
+import { mapState } from 'vuex'
+import moment from 'moment'
 
 export default {
   data () {
     return {
       startDate: '',
       endDate: '',
-      dates: []
+      dates: [],
+      inspections: null,
+      sortedInsections: []
     }
+  },
+  computed: {
+    ...mapState([
+      'isUserLoggedIn',
+      'user'
+    ])
   },
   components: {
     DatePicker
+  },
+  async mounted () {
+    if (this.isUserLoggedIn) {
+      this.inspections = (await InspectionService.index()).data
+    }
   },
   methods: {
     getDatesBetween (startDate, endDate) {
@@ -59,6 +80,11 @@ export default {
       }
       console.log(this.dates)
       return this.dates
+    },
+    getRecords () {
+      const ins = this.inspections.filter(inspection => moment(inspection.date, 'DD/MM/YYYY').month() === this.startDate)
+      console.log(ins)
+      return ins
     }
   }
 }
