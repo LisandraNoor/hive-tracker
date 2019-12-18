@@ -16,8 +16,11 @@
         <td>{{ bookkeeping.amount }}€</td>
         <td><router-link :to="`/bookkeepings/${bookkeeping.id}/edit`"><b-button>Muuda</b-button></router-link></td>
       </tr>
+      <tr>
+        <td>Kokku:</td>
+          <td>{{ incomesTotal - outcomesTotal }}</td>
+      </tr>
     </table>
-    {{ total }}
   </div>
 </template>
 
@@ -37,42 +40,32 @@ export default {
       'isUserLoggedIn',
       'user'
     ]),
-    total () {
-      let total = []
+    incomesTotal () {
+      let incomes = []
       Object.entries(this.bookkeepings).forEach(([key, val]) => {
-        total.push(val.amount)
+        if (val.type === 'sissetulek') {
+          incomes.push(val.amount)
+        }
       })
-      return total.reduce(function (total, num) {
-        return total + num
+      return incomes.reduce(function (incomes, num) {
+        return incomes + num
       }, 0)
-      if (this.bookkeepings.type === 'income') { 
-      }
-      if (this.type === 'outcome') {
-        console.log('outcome')
-      }
-      /* if (this.type === 'income') {
-        console.log('income: ', this.total)
-        return this.total + this.amount
-      } else if (this.type === 'outcome') {
-        console.log('outcome: ', this.total)
-        return this.total - this.amount
-      }
-      console.log('incalc: ', this.total)
-      return this.total */
+    },
+    outcomesTotal () {
+      let outcomes = []
+      Object.entries(this.bookkeepings).forEach(([key, val]) => {
+        if (val.type === 'valjaminek') {
+          outcomes.push(val.amount)
+        }
+      })
+      return outcomes.reduce(function (outcomes, num) {
+        return outcomes + num
+      }, 0)
     }
   },
   async mounted () {
     if (this.isUserLoggedIn) {
       this.bookkeepings = (await BookkeepingService.index()).data
-      /* if (this.type == 'income') {
-        console.log('income: ', this.total)
-        return this.total + this.amount
-      } else if (this.type == 'outcome') {
-        console.log('outcome: ', this.total)
-        return this.total - this.amount
-      }
-      console.log('incalc: ', this.total)
-      return this.total */
     }
   }
 }
