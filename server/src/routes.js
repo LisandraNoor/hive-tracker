@@ -29,12 +29,15 @@ module.exports = (app) => {
     HiveController.show
   ),
   app.put('/hives/:hiveId',
+    isAuthenticated,
     HiveController.put
   ),
   app.delete('/hives/:hiveId',
+    isAuthenticated,
     HiveController.remove
   ),
   app.post('/hives',
+    isAuthenticated,
     HiveController.post
   ),
   // bookkeeping
@@ -47,12 +50,15 @@ module.exports = (app) => {
     BookkeepingController.show
   ),
   app.put('/bookkeepings/:bookkeepingId',
+    isAuthenticated,
     BookkeepingController.put
   ),
   app.delete('/bookkeepings/:bookkeepingId',
+    isAuthenticated,
     BookkeepingController.remove
   ),
   app.post('/bookkeepings',
+    isAuthenticated,
     BookkeepingController.post
   ),
   // feeding
@@ -65,12 +71,15 @@ module.exports = (app) => {
     FeedingController.show
   ),
   app.put('/feedings/:feedingId',
+    isAuthenticated,
     FeedingController.put
   ),
   app.delete('/feedings/:feedingId',
+    isAuthenticated,
     FeedingController.remove
   ),
   app.post('/feedings',
+    isAuthenticated,
     FeedingController.post
   ),
   // inspection
@@ -83,12 +92,15 @@ module.exports = (app) => {
     InspectionController.show
   ),
   app.put('/inspections/:inspectionId',
+    isAuthenticated,
     InspectionController.put
   ),
   app.delete('/inspections/:inspectionId',
+    isAuthenticated,
     InspectionController.remove
   ),
   app.post('/inspections',
+   isAuthenticated,
     InspectionController.post
   ),
   // treatment
@@ -101,12 +113,15 @@ module.exports = (app) => {
     TreatmentController.show
   ),
   app.put('/treatments/:treatmentId',
+    isAuthenticated,
     TreatmentController.put
   ),
   app.delete('/treatments/:treatmentId',
+    isAuthenticated,
     TreatmentController.remove
   ),
   app.post('/treatments',
+    isAuthenticated,
     TreatmentController.post
   ),
   // honeycollection
@@ -115,15 +130,19 @@ module.exports = (app) => {
     HoneyCollectionController.index
   ),
   app.get('/honeycollections/:honeycollectionId',
+    isAuthenticated,
     HoneyCollectionController.show
   ),
   app.put('/honeycollections/:honeycollectionId',
+    isAuthenticated,
     HoneyCollectionController.put
   ),
   app.delete('/honeycollections/:honeycollectionId',
+    isAuthenticated,
     HoneyCollectionController.remove
   ),
   app.post('/honeycollections',
+    isAuthenticated,
     HoneyCollectionController.post
   )
 }

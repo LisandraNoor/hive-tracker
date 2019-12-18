@@ -1,5 +1,5 @@
 module.exports = {
-  port: process.env.PORT || 8082,
+  port: process.env.PORT || 8081,
   db: {
     database: process.env.DB_NAME || 'hivetracker',
     user: process.env.DB_USER || 'hivetracker',

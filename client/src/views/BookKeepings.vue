@@ -32,7 +32,6 @@ export default {
   data () {
     return {
       bookkeepings: []
-      // total: 0
     }
   },
   computed: {

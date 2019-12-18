@@ -17,10 +17,6 @@
     ></date-picker><br>
     <button @click="getDatesBetween">Get Range</button>
     <label>Vali soovitud sisend:</label><br>
-    <div>
-      <input type="checkbox">
-      <p>Mesi</p>
-    </div>
     <ul id="sortbydate">
       <li v-for="inspection in inspections" :key="inspection.id">
         {{ inspection.date }}
