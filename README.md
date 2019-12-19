@@ -12,6 +12,6 @@ cd server
 ```
 
 Serveri käivitamisel võib tekkida probleem pordi numbri suhtes. Pordi numbrit on võimalik muuta config/config.js failis muutes järgmist koodi rida:
-````
+```
 port: process.env.PORT || 8081
 ```
