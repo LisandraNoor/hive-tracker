@@ -12,6 +12,7 @@ export default new Vuex.Store({
   state: {
     token: null,
     user: null,
+    date: null,
     isUserLoggedIn: false
   },
   mutations: {
@@ -33,6 +34,11 @@ export default new Vuex.Store({
     },
     setUser ({ commit }, user) {
       commit('setUser', user)
+    }
+  },
+  getters: {
+    dateFormat: (state) => {
+      return state.date.getDate() + '-' + (state.date.getMonth() + 1) + '-' + state.date.getFullYear()
     }
   }
 })

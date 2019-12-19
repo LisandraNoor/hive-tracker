@@ -10,9 +10,9 @@
     <router-link :to="`/bookkeepings/addbookkeeping`"><b-button id="addBookkeeping" variant="dark">+</b-button></router-link>
     <table>
       <tr v-for="bookkeeping in bookkeepings" :key="bookkeeping.id">
-        <!-- <td>{{ bookkeeping.date }}</td> -->
+        <td>{{ dateFormat }}</td>
         <td>{{ bookkeeping.type }}</td>
-        <!-- <td>{{ bookkeeping.name }}</td> -->
+        <td>{{ bookkeeping.name }}</td>
         <td>{{ bookkeeping.amount }}€</td>
         <td><router-link :to="`/bookkeepings/${bookkeeping.id}/edit`"><b-button>Muuda</b-button></router-link></td>
       </tr>
@@ -27,6 +27,7 @@
 <script>
 import BookkeepingService from '@/services/BookkeepingService'
 import { mapState } from 'vuex'
+import moment from 'moment'
 
 export default {
   data () {
@@ -60,6 +61,9 @@ export default {
       return outcomes.reduce(function (outcomes, num) {
         return outcomes + num
       }, 0)
+    },
+    dateFormat (date) {
+      return moment(date).format('DD-MMM-YYYY') // takes current date for some reason
     }
   },
   async mounted () {

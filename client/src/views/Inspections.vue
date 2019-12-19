@@ -2,14 +2,14 @@
   <div class="inspections-component">
     <h1>Ülevaatlused</h1>
     <div v-for="inspection in inspections" :key="inspection.id">
-      <router-link :to="`/inspections/${inspection.id}`"><p>{{ inspection.date }</p></router-link>
+      <router-link :to="`/inspections/${inspection.id}`"><p>{{ dateFormat }}</p></router-link>
     </div>
   </div>
 </template>
 
 <script>
 import InspectionService from '@/services/InspectionService'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   data () {
@@ -21,6 +21,9 @@ export default {
     ...mapState([
       'isUserLoggedIn',
       'user'
+    ]),
+    ...mapGetters([
+      'dateFormat'
     ])
   },
   async mounted () {
