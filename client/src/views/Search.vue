@@ -19,10 +19,10 @@
     <label>Vali soovitud sisend:</label><br>
     <ul id="sortbydate">
       <li v-for="inspection in inspections" :key="inspection.id">
-        {{ inspection.date }}
+        {{ inspection.date | formatDate }}
       </li>
     </ul>
-    <button @click="getRecords()">getRecords</button>
+    <button @click="sortRecords()">sortRecords</button>
   </div>
 </template>
 
@@ -47,7 +47,8 @@ export default {
     ...mapState([
       'isUserLoggedIn',
       'user'
-    ])
+    ]),
+    fi
   },
   components: {
     DatePicker
@@ -58,6 +59,12 @@ export default {
     }
   },
   methods: {
+    sortRecords () {
+      const sorted = this.inspections.sort(function (startDate, endDate) {
+        return new Date(endDate.date) - new Date(startDate.date)
+      })
+      console.log(sorted)
+    },
     getDatesBetween (startDate, endDate) {
       this.dates = []
       // Strip hours minutes seconds etc.
@@ -76,11 +83,6 @@ export default {
       }
       console.log(this.dates)
       return this.dates
-    },
-    getRecords () {
-      const ins = this.inspections.filter(inspection => moment(inspection.date, 'DD/MM/YYYY').month() === this.startDate)
-      console.log(ins)
-      return ins
     }
   }
 }

@@ -4,7 +4,7 @@
     <table v-for="treatment in treatments" :key="treatment.id">
       <tr>
         <td>Kuupäev:</td>
-        <td>{{ treatment.date }}</td>
+        <td>{{ treatment.date | formatDate }}</td>
       </tr>
       <tr>
         <td>Tüüp:</td>

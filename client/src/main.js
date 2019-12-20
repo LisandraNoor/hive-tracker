@@ -6,12 +6,19 @@ import BootstrapVue from 'bootstrap-vue'
 import { sync } from 'vuex-router-sync'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import moment from 'moment'
 
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
 
 sync(store, router)
+
+Vue.filter('formatDate', function (value) {
+  if (value) {
+    return moment(String(value)).format('DD/MMM/YYYY')
+  }
+})
 
 new Vue({
   router,

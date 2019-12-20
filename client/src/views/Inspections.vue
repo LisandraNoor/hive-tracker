@@ -2,7 +2,7 @@
   <div class="inspections-component">
     <h1>Ülevaatlused</h1>
     <div v-for="inspection in inspections" :key="inspection.id">
-      <router-link :to="`/inspections/${inspection.id}`"><p>{{ dateFormat }}</p></router-link>
+      <router-link :to="`/inspections/${inspection.id}`"><p>{{ inspections.date | formatDate }}</p></router-link>
     </div>
   </div>
 </template>

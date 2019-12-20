@@ -4,7 +4,7 @@
     <table v-for="honeycollection in honeycollections" :key="honeycollection.id">
       <tr>
         <td>Kuupäev:</td>
-        <td>{{ honeycollection.date }}</td>
+        <td>{{ honeycollection.date | formatDate }}</td>
       </tr>
       <tr>
         <td>Kogus:</td>

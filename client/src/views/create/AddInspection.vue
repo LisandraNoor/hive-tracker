@@ -57,7 +57,6 @@
           id="queenColor"
           v-model="inspection.queenColor"
           :options="inspection.queenColors"
-          required
         ></b-form-select>
       </b-form-group>
       <!--frames-->
