@@ -4,7 +4,7 @@
     <table v-for="treatment in treatments" :key="treatment.id">
       <tr>
         <td>Kuupäev:</td>
-        <td>{{ treatment.date }}</td>
+        <td>{{ treatment.date | formatDate }}</td>
       </tr>
       <tr>
         <td>Tüüp:</td>
@@ -16,7 +16,6 @@
       </tr>
       <tr>
         <td><router-link :to="`/hives/${hive.id}/treatments/${treatment.id}/edit`"><b-button>Muuda</b-button></router-link></td>
-        <td><b-button @click="deleteTreatment">Kustuta</b-button></td>
       </tr>
     </table>
   </div>

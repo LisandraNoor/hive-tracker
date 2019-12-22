@@ -3,7 +3,7 @@
     <table>
       <tr>
         <td>Kuupäev</td>
-        <td>{{ inspection.date }}</td>
+        <td>{{ inspection.date | formatDate }}</td>
       </tr>
       <tr>
         <td>Mesilaste meeleolu</td>
@@ -86,20 +86,24 @@
         <td>{{ inspection.haueAmount }}</td>
       </tr>
     </table>
-    <router-link :to="`/inspections/${inspection.id}/edit`"><b-button>Muuda</b-button></router-link>
+    <router-link :to="`/hives/${hive.id}/inspections/${inspection.id}/edit`"><b-button>Muuda</b-button></router-link>
   </div>
 </template>
 
 <script>
 import InspectionService from '@/services/InspectionService'
+import HiveService from '@/services/HiveService'
 
 export default {
   data () {
     return {
-      inspection: {}
+      inspection: {},
+      hive: {}
     }
   },
   async mounted () {
+    const hiveId = this.$store.state.route.params.hiveId
+    this.hive = (await HiveService.show(hiveId)).data
     const inspectionId = this.$store.state.route.params.inspectionId
     this.inspection = (await InspectionService.show(inspectionId)).data
   }

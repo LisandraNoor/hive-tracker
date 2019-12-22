@@ -2,7 +2,7 @@
   <div class="feedings-component">
     <h1>Söötmised</h1>
     <div v-for="feeding in feedings" :key="feeding.id">
-      <p>{{ feeding.date }}</p>
+      <p>{{ feeding.date | formatDate }}</p>
       <p>{{ feeding.type }}</p>
       <p>{{ feeding.amount }}</p>
       <router-link :to="`/hives/${hive.id}/feedings/${feeding.id}/edit`"><b-button>Muuda</b-button></router-link>

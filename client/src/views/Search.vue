@@ -14,15 +14,25 @@
       type="date"
       format="DD/MM/YYYY"
       required
-    ></date-picker><br>
-    <button @click="getDatesBetween">Get Range</button>
-    <label>Vali soovitud sisend:</label><br>
+    ></date-picker>
+    <button @click="filteredInspections">Get Range</button><br>
+    <h3>Filtered dates</h3>
     <ul id="sortbydate">
+      <li v-for="inspection in filteredData" :key="inspection.date">
+        {{ inspection.date | formatDate }}
+      </li>
+    </ul>
+    <h3>All dates</h3>
+    <ul id="alldates">
       <li v-for="inspection in inspections" :key="inspection.id">
         {{ inspection.date | formatDate }}
       </li>
     </ul>
-    <button @click="sortRecords()">sortRecords</button>
+    <h3>Start date</h3>
+    {{ startDate | formatDate }}<br>
+    <h3>End date</h3>
+    {{ endDate | formatDate }}<br>
+    {{ dates }}
   </div>
 </template>
 
@@ -36,19 +46,17 @@ import moment from 'moment'
 export default {
   data () {
     return {
-      startDate: '',
-      endDate: '',
+      startDate: null,
+      endDate: null,
       dates: [],
-      inspections: null,
-      sortedInsections: []
+      inspections: []
     }
   },
   computed: {
     ...mapState([
       'isUserLoggedIn',
       'user'
-    ]),
-    fi
+    ])
   },
   components: {
     DatePicker
@@ -57,15 +65,30 @@ export default {
     if (this.isUserLoggedIn) {
       this.inspections = (await InspectionService.index()).data
     }
+    this.inspections.sort(function (startDate, endDate) {
+      return new Date(endDate.date) - new Date(startDate.date)
+    })
   },
   methods: {
-    sortRecords () {
-      const sorted = this.inspections.sort(function (startDate, endDate) {
-        return new Date(endDate.date) - new Date(startDate.date)
+    filteredData () {
+      var _ = require('lodash')
+      var startDate = moment(String(this.startDate)).format('DD/MMM/YYYY')
+      var endDate = moment(String(this.endDate)).format('DD/MMM/YYYY')
+      return _.filter(this.inspections, function (inspections) {
+        if ((_.isNull(startDate) && _.isNull(endDate))) {
+          console.log('wtf')
+          return true
+        } else {
+          var date = moment(String(inspections.date)).format('DD/MMM/YYYY')
+          console.log(startDate, ' ', endDate)
+          console.log('else: ', date)
+          console.log(startDate <= date)
+          return (startDate <= date)
+        }
       })
-      console.log(sorted)
     },
-    getDatesBetween (startDate, endDate) {
+    filteredInspections (startDate, endDate) {
+      this.filteredData()
       this.dates = []
       // Strip hours minutes seconds etc.
       let currentDate = new Date(

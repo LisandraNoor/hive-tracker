@@ -64,9 +64,7 @@ export default {
           userId: this.$store.state.user.id,
           hiveId: this.$store.state.route.params.hiveId
         })
-        this.$router.push({
-          path: '/hives'
-        })
+        this.$router.go(-1)
       } catch (err) {
         console.log(err)
       }

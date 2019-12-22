@@ -15,7 +15,7 @@
         <td>{{ treatment.amount }}</td>
       </tr>
       <tr>
-        <td><router-link :to="`/treatments/${treatment.id}/edit`"><b-button>Muuda</b-button></router-link></td>
+        <td><router-link :to="`/hives/${hive.id}/treatments/${treatment.id}/edit`"><b-button>Muuda</b-button></router-link></td>
       </tr>
     </table>
   </div>
@@ -23,16 +23,20 @@
 
 <script>
 import TreatmentService from '@/services/TreatmentService'
+import HiveService from '@/services/HiveService'
 import { mapState } from 'vuex'
 
 export default {
   data () {
     return {
       treatments: [],
-      treatment: null
+      treatment: null,
+      hive: {}
     }
   },
   async mounted () {
+    const hiveId = this.$store.state.route.params.hiveId
+    this.hive = (await HiveService.show(hiveId)).data
     this.treatments = (await TreatmentService.index()).data
   },
   computed: {

@@ -28,7 +28,7 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <b-button type="submit" variant="primary" @click="$router.push(-1)">Submit</b-button>
     </b-form>
   </div>
 </template>
@@ -64,7 +64,7 @@ export default {
           userId: this.$store.state.user.id,
           hiveId: this.$store.state.route.params.hiveId
         })
-        this.$router.push('/hives')
+        this.$router.go(-1)
       } catch (err) {
         console.log(err)
       }
