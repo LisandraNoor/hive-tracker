@@ -1,5 +1,6 @@
 <template>
   <div class="add-feeding-component">
+    <h2>Söötmise lisamine</h2>
     <b-form @submit="onSubmit">
       <b-form-group id="date" label="Kuupäev">
         <date-picker
@@ -28,7 +29,7 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <b-button type="submit" variant="warning">Submit</b-button>
     </b-form>
   </div>
 </template>
@@ -74,4 +75,15 @@ export default {
 </script>
 
 <style scoped>
+  form {
+    width: 50%;
+    text-align: center;
+    margin-left: 26%;
+  }
+  div#date.mx-datepicker {
+    width: 100%;
+  }
+  input#amount.form-control {
+    width: 100%;
+  }
 </style>

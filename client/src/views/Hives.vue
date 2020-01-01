@@ -1,10 +1,12 @@
 <template>
   <div class="hives-component">
     <h1>Tarud</h1>
-    <div v-for="hive in hives" :key="hive.id">
+    <div v-for="hive in hives" :key="hive.id" class="hive">
       <router-link :to="`/hives/${hive.id}`"><b-button>{{ hive.name }}</b-button></router-link>
     </div>
-    <router-link :to="`/addhive`"><b-button>+ Lisa taru</b-button></router-link>
+    <div class="addNewHive">
+      <router-link :to="`/addhive`"><b-button class="addHive">+</b-button></router-link>
+    </div>
   </div>
 </template>
 
@@ -33,4 +35,24 @@ export default {
 </script>
 
 <style scoped>
+  button.btn-secondary {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    width: 150px;
+    font-size: 24px;
+    background-color: #d37400;
+    border: 5px solid #995400;
+    border-radius: 15px;
+    color: #251500;
+    margin: 15px;
+  }
+  div.hive, div.addNewHive {
+    width: 180px;
+    display: inline-block;
+  }
+  button.btn.addHive.btn-secondary {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    opacity: 0.8;
+  }
 </style>

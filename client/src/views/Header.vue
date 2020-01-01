@@ -1,6 +1,6 @@
 <template>
   <div class="header-component">
-    <b-navbar toggleable="lg" type="dark" variant="info">
+    <b-navbar toggleable="lg" type="dark" variant="warning">
       <router-link :to="`/`" v-if="!$store.state.isUserLoggedIn">
         <b-navbar-brand>HiveTracker</b-navbar-brand>
       </router-link>
@@ -9,7 +9,7 @@
       </router-link>
       <router-link :to="`/hives`">
         <b-button
-          variant="info"
+          variant="warning"
           size="md"
           class="pb-2"
           type="submit"
@@ -19,7 +19,7 @@
       </router-link>
       <router-link :to="`/honeycollections`">
         <b-button
-          variant="info"
+          variant="warning"
           size="md"
           class="pb-2"
           type="submit"
@@ -29,7 +29,7 @@
       </router-link>
       <router-link :to="`/bookkeepings`">
         <b-button
-          variant="info"
+          variant="warning"
           size="md"
           class="pb-2"
           type="submit"
@@ -39,7 +39,7 @@
       </router-link>
       <router-link :to="`/feedings`">
         <b-button
-          variant="info"
+          variant="warning"
           size="md"
           class="pb-2"
           type="submit"
@@ -49,7 +49,7 @@
       </router-link>
       <router-link :to="`/treatments`">
         <b-button
-          variant="info"
+          variant="warning"
           size="md"
           class="pb-2"
           type="submit"
@@ -59,7 +59,7 @@
       </router-link>
       <router-link :to="`/search`">
         <b-button
-          variant="info"
+          variant="warning"
           size="md"
           class="pb-2"
           type="submit"
@@ -70,7 +70,7 @@
       <b-navbar-nav class="ml-auto">
         <router-link :to="`/`">
           <b-button
-            variant="info"
+            variant="warning"
             size="md"
             class="pb-2"
             type="submit"
@@ -80,7 +80,7 @@
         </router-link>
         <router-link :to="`/register`">
           <b-button
-            variant="info"
+            variant="warning"
             size="md"
             class="pb-2"
             type="submit"
@@ -90,7 +90,7 @@
         </router-link>
         <router-link :to="`/`">
           <b-button
-            variant="info"
+            variant="warning"
             size="md"
             class="pb-2"
             type="submit"
@@ -119,4 +119,7 @@ export default {
 </script>
 
 <style scoped>
+  div.navbar-brand {
+    color: black;
+  }
 </style>

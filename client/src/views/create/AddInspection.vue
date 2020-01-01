@@ -1,5 +1,6 @@
 <template>
   <div class="treatment-component">
+    <h2>Ülevaate lisamine</h2>
     <b-form @submit="onSubmit">
       <!--misc-->
       <b-form-group id="date" label="Kuupäev">
@@ -161,7 +162,7 @@
         ></b-form-select>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <b-button type="submit" variant="warning">Submit</b-button>
     </b-form>
   </div>
 </template>
@@ -291,4 +292,15 @@ export default {
 </script>
 
 <style scoped>
+  form {
+    width: 50%;
+    text-align: center;
+    margin-left: 26%;
+  }
+  div#date.mx-datepicker {
+    width: 100%;
+  }
+  input#stringFrame.form-control, #bottomFrame.form-control, #fullFrame.form-control, #removedFramed.form-control, #degrees.form-control {
+    width: 100%;
+  }
 </style>
