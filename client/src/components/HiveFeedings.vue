@@ -1,12 +1,40 @@
 <template>
   <div class="feedings-component">
-    <h1>Söötmised</h1>
-    <div v-for="feeding in feedings" :key="feeding.id">
-      <p>{{ feeding.date | formatDate }}</p>
-      <p>{{ feeding.type }}</p>
-      <p>{{ feeding.amount }}</p>
-      <router-link :to="`/hives/${hive.id}/feedings/${feeding.id}/edit`"><b-button>Muuda</b-button></router-link>
-    </div>
+    <h2>Söötmised</h2>
+    <v-layout row wrap>
+      <v-flex xs12>
+        <v-data-table
+          :headers="headers"
+          :items="feedings"
+          :pagination.sync="pagination"
+          select-all
+          item-key="date"
+          class="elevation-1"
+          :inspections-per-page-items="[-1]"
+          :hide-actions=true
+          :search="filters"
+          :custom-filter="customFilter"
+        >
+          <template slot="headers" slot-scope="props">
+            <tr>
+              <th
+                v-for="header in props.headers"
+                :key="header.text"
+              >
+                {{ header.text }}
+              </th>
+            </tr>
+          </template>
+          <template slot="items" slot-scope="props">
+            <tr>
+              <td>{{ props.item.date | formatDate }}</td>
+              <td>{{ props.item.type }}</td>
+              <td>{{ props.item.amount }}</td>
+            </tr>
+          </template>
+        </v-data-table>
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 
@@ -19,7 +47,24 @@ export default {
   data () {
     return {
       hive: {},
-      feedings: null
+      feedings: [],
+      pagination: {
+        sortBy: 'date'
+      },
+      headers: [
+        {
+          text: 'Kuupäev',
+          value: 'kuupaev'
+        },
+        {
+          text: 'Tüüp',
+          value: 'tuup'
+        },
+        {
+          text: 'Kogus',
+          value: 'kogus'
+        }
+      ]
     }
   },
   computed: {

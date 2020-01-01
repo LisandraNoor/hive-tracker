@@ -1,9 +1,38 @@
 <template>
   <div class="inspections-component">
-    <h1>Ülevaatlused</h1>
-    <div v-for="inspection in inspections" :key="inspection.id">
-      <router-link :to="`/hives/${hive.id}/inspections/${inspection.id}`"><p>{{ inspection.date | formatDate }}</p></router-link>
-    </div>
+    <h2>Ülevaatlused</h2>
+    <v-layout row wrap>
+      <v-flex xs12>
+        <v-data-table
+          :headers="headers"
+          :items="inspections"
+          :pagination.sync="pagination"
+          select-all
+          item-key="date"
+          class="elevation-1"
+          :inspections-per-page-items="[-1]"
+          :hide-actions=true
+          :search="filters"
+          :custom-filter="customFilter"
+        >
+          <template slot="headers" slot-scope="props">
+            <tr>
+              <th
+                v-for="header in props.headers"
+                :key="header.text"
+              >
+                {{ header.text }}
+              </th>
+            </tr>
+          </template>
+          <template slot="items" slot-scope="props">
+            <tr>
+              <td>{{ props.item.date | formatDate }}</td>
+            </tr>
+          </template>
+        </v-data-table>
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 
@@ -16,7 +45,16 @@ export default {
   data () {
     return {
       hive: {},
-      inspections: null
+      inspections: [],
+      pagination: {
+        sortBy: 'date'
+      },
+      headers: [
+        {
+          text: 'Kuupäev',
+          value: 'kuupaev'
+        }
+      ]
     }
   },
   computed: {

@@ -1,23 +1,40 @@
 <template>
   <div class="treatments-component">
-    <h1>Ravimised</h1>
-    <table v-for="treatment in treatments" :key="treatment.id">
-      <tr>
-        <td>Kuupäev:</td>
-        <td>{{ treatment.date | formatDate }}</td>
-      </tr>
-      <tr>
-        <td>Tüüp:</td>
-        <td>{{ treatment.type }}</td>
-      </tr>
-      <tr>
-        <td>Kogus:</td>
-        <td>{{ treatment.amount }}</td>
-      </tr>
-      <tr>
-        <td><router-link :to="`/hives/${hive.id}/treatments/${treatment.id}/edit`"><b-button>Muuda</b-button></router-link></td>
-      </tr>
-    </table>
+    <h2>Raamatupidamised</h2>
+    <v-layout row wrap>
+      <v-flex xs12>
+        <v-data-table
+          :headers="headers"
+          :items="treatments"
+          :pagination.sync="pagination"
+          select-all
+          item-key="date"
+          class="elevation-1"
+          :inspections-per-page-items="[-1]"
+          :hide-actions=true
+          :search="filters"
+          :custom-filter="customFilter"
+        >
+          <template slot="headers" slot-scope="props">
+            <tr>
+              <th
+                v-for="header in props.headers"
+                :key="header.text"
+              >
+                {{ header.text }}
+              </th>
+            </tr>
+          </template>
+          <template slot="items" slot-scope="props">
+            <tr>
+              <td>{{ props.item.date | formatDate }}</td>
+              <td>{{ props.item.type }}</td>
+              <td>{{ props.item.amount }}</td>
+            </tr>
+          </template>
+        </v-data-table>
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 
@@ -30,8 +47,25 @@ export default {
   data () {
     return {
       hive: {},
-      treatments: null,
-      treatment: {}
+      treatments: [],
+      treatment: {},
+      pagination: {
+        sortBy: 'date'
+      },
+      headers: [
+        {
+          text: 'Kuupäev',
+          value: 'kuupaev'
+        },
+        {
+          text: 'Tüüp',
+          value: 'tuup'
+        },
+        {
+          text: 'Kogus',
+          value: 'kogus'
+        }
+      ]
     }
   },
   computed: {
