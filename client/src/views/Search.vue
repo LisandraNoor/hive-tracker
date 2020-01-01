@@ -1,55 +1,209 @@
 <template>
-  <div class="search-component">
-    <label>Vali ajaperiood:</label><br>
-    <date-picker
-      id="date"
-      v-model="startDate"
-      type="date"
-      format="DD/MM/YYYY"
-      required
-    ></date-picker>
-    <date-picker
-      id="date"
-      v-model="endDate"
-      type="date"
-      format="DD/MM/YYYY"
-      required
-    ></date-picker>
-    <button @click="filteredInspections">Get Range</button><br>
-    <h3>Filtered dates</h3>
-    <ul id="sortbydate">
-      <li v-for="inspection in filteredData" :key="inspection.date">
-        {{ inspection.date | formatDate }}
-      </li>
-    </ul>
-    <h3>All dates</h3>
-    <ul id="alldates">
-      <li v-for="inspection in inspections" :key="inspection.id">
-        {{ inspection.date | formatDate }}
-      </li>
-    </ul>
-    <h3>Start date</h3>
-    {{ startDate | formatDate }}<br>
-    <h3>End date</h3>
-    {{ endDate | formatDate }}<br>
-    {{ dates }}
-  </div>
+  <v-layout row wrap>
+    <v-flex xs3>
+      <v-menu
+        ref="showStartDate"
+        :close-on-content-click="false"
+        v-model="showStartDate"
+        :return-value.sync="startDate"
+        lazy
+        offset-y
+        full-width
+        min-width="290px"
+      >
+        <v-text-field
+          slot="activator"
+          v-model="startDate"
+          label="Alates"
+          readonly
+        ></v-text-field>
+        <v-date-picker
+          v-model="startDate"
+          @input="filterStartDate"
+        ></v-date-picker>
+      </v-menu>
+    </v-flex>
+    <v-flex xs3>
+      <v-menu
+        ref="showEndDate"
+        :close-on-content-click="false"
+        v-model="showEndDate"
+        :return-value.sync="endDate"
+        lazy
+        offset-y
+        full-width
+        min-width="290px"
+      >
+        <v-text-field
+          slot="activator"
+          v-model="endDate"
+          label="Kuni"
+          readonly
+        ></v-text-field>
+        <v-date-picker
+          v-model="endDate"
+          @input="filterEndDate"
+        ></v-date-picker>
+      </v-menu>
+    </v-flex>
+    <v-flex xs12>
+      <v-data-table
+        :headers="headers"
+        :items="inspections"
+        :pagination.sync="pagination"
+        select-all
+        item-key="date"
+        class="elevation-1"
+        :inspections-per-page-items="[-1]"
+        :hide-actions=true
+        :search="filters"
+        :custom-filter="customFilter"
+      >
+        <template slot="headers" slot-scope="props">
+          <tr>
+            <th
+              v-for="header in props.headers"
+              :key="header.text"
+            >
+              {{ header.text }}
+            </th>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>some thing</td>
+            <td>asd</td>
+            <td>asd</td>
+            <td>asd</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </template>
+        <template slot="items" slot-scope="props">
+          <tr>
+            <td>{{ props.item.date | formatDate }}</td>
+            <td>{{ props.item.attitude }}</td>
+            <td>{{ props.item.strength }}</td>
+            <td>{{ props.item.feedAmount }}</td>
+            <td>{{ props.item.frameCoverage }}</td>
+            <td>{{ props.item.queen }}</td>
+            <td>{{ props.item.queenColor }}</td>
+            <td>{{ props.item.stringFrame }}</td>
+            <td>{{ props.item.bottomFrame }}</td>
+            <td>{{ props.item.fullFrame }}</td>
+            <td>{{ props.item.removedFramed }}</td>
+            <td>{{ props.item.degrees }}</td>
+            <td>{{ props.item.weather }}</td>
+            <td>{{ props.item.eggAmount }}</td>
+            <td>{{ props.item.diseaseType }}</td>
+            <td>{{ props.item.furrosAmount }}</td>
+            <td>{{ props.item.haueAmount }}</td>
+          </tr>
+        </template>
+      </v-data-table>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
-import DatePicker from 'vue2-datepicker'
-import 'vue2-datepicker/index.css'
 import InspectionService from '@/services/InspectionService'
 import { mapState } from 'vuex'
-import moment from 'moment'
 
 export default {
   data () {
     return {
+      showStartDate: false,
+      showEndDate: false,
       startDate: null,
       endDate: null,
       dates: [],
-      inspections: []
+      inspections: [],
+      filters: {
+        startDate: null,
+        endDate: null
+      },
+      pagination: {
+        sortBy: 'date'
+      },
+      headers: [
+        {
+          text: 'Kuupäev',
+          value: 'kuupaev'
+        },
+        {
+          text: 'Suhtumine',
+          value: 'suhtumine'
+        },
+        {
+          text: 'Tugevus',
+          value: 'tugevus'
+        },
+        {
+          text: 'Sööda kogus',
+          value: 'soodakogus'
+        },
+        {
+          text: 'Katvus',
+          value: 'raamikatvus'
+        },
+        {
+          text: 'Ema',
+          value: 'emaolemasolu'
+        },
+        {
+          text: 'Ema värv',
+          value: 'emavarv'
+        },
+        {
+          text: 'Traadiga',
+          value: 'traadigaraamid'
+        },
+        {
+          text: 'Põhjaga',
+          value: 'pohjagaraamid'
+        },
+        {
+          text: 'Ülesehitatud',
+          value: 'ulesehitatudraamid'
+        },
+        {
+          text: 'Eemaldatud',
+          value: 'eemaldatudraamid'
+        },
+        {
+          text: 'Kraadid',
+          value: 'kraadid'
+        },
+        {
+          text: 'Ilm',
+          value: 'ilm'
+        },
+        {
+          text: 'Munad',
+          value: 'munadekogus'
+        },
+        {
+          text: 'Haigus',
+          value: 'haigusetuup'
+        },
+        {
+          text: 'Vaglad',
+          value: 'vakladekogus'
+        },
+        {
+          text: 'Haue',
+          value: 'haudmekogus'
+        }
+      ]
     }
   },
   computed: {
@@ -57,9 +211,6 @@ export default {
       'isUserLoggedIn',
       'user'
     ])
-  },
-  components: {
-    DatePicker
   },
   async mounted () {
     if (this.isUserLoggedIn) {
@@ -70,42 +221,68 @@ export default {
     })
   },
   methods: {
-    filteredData () {
-      var _ = require('lodash')
-      var startDate = moment(String(this.startDate)).format('DD/MMM/YYYY')
-      var endDate = moment(String(this.endDate)).format('DD/MMM/YYYY')
-      return _.filter(this.inspections, function (inspections) {
-        if ((_.isNull(startDate) && _.isNull(endDate))) {
-          console.log('wtf')
-          return true
-        } else {
-          var date = moment(String(inspections.date)).format('DD/MMM/YYYY')
-          console.log(startDate, ' ', endDate)
-          console.log('else: ', date)
-          console.log(startDate <= date)
-          return (startDate <= date)
-        }
+    customFilter (items, filters, filter, headers) {
+      const cf = new this.$MultiFilters(items, filters, filter, headers)
+      cf.registerFilter('startDate', function (startDate, items) {
+        if (startDate === null) return items
+        return items.filter(item => {
+          const inspectionStartDate = new Date(item.date).getTime()
+          console.log(inspectionStartDate)
+          return inspectionStartDate >= startDate
+        }, startDate)
       })
+      cf.registerFilter('endDate', function (endDate, items) {
+        if (endDate === null) return items
+        return items.filter(item => {
+          const inspectionEndDate = new Date(item.date).getTime()
+          return inspectionEndDate <= endDate
+        }, endDate)
+      })
+      return cf.runFilters()
     },
-    filteredInspections (startDate, endDate) {
-      this.filteredData()
-      this.dates = []
-      // Strip hours minutes seconds etc.
-      let currentDate = new Date(
-        this.startDate.getFullYear(),
-        this.startDate.getMonth(),
-        this.startDate.getDate()
-      )
-      while (currentDate <= this.endDate) {
-        this.dates.push(currentDate)
-        currentDate = new Date(
-          currentDate.getFullYear(),
-          currentDate.getMonth(),
-          currentDate.getDate() + 1 // Will increase month if over range
-        )
+    toggleAll () {
+      if (this.selected.length) {
+        this.selected = []
+      } else {
+        this.selected = this.rows.slice()
       }
-      console.log(this.dates)
-      return this.dates
+    },
+    /**
+     * Column shorting.
+     *
+     * @param column
+     */
+    changeSort (column) {
+      if (this.pagination.sortBy === column) {
+        this.pagination.descending = !this.pagination.descending
+      } else {
+        this.pagination.sortBy = column
+        this.pagination.descending = false
+      }
+    },
+    filterStartDate (val) {
+      this.$refs.showStartDate.save(val)
+      const timestamp = new Date(val).getTime()
+      this.filters = this.$MultiFilters.updateFilters(this.filters, { startDate: timestamp })
+    },
+    filterEndDate (val) {
+      console.log(val)
+      this.$refs.showEndDate.save(val)
+      const timestamp = new Date(val).getTime()
+      console.log(timestamp)
+      this.filters = this.$MultiFilters.updateFilters(this.filters, { endDate: timestamp })
+    }
+  },
+  filters: {
+    /**
+     * Format a timestamp into a d/m/yyy (because spanish format).
+     *
+     * @param value
+     * @returns {string}
+     */
+    formatDates: function (value) {
+      if (!value) return ''
+      return new Date(value).toLocaleDateString('es-ES')
     }
   }
 }

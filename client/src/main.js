@@ -7,10 +7,13 @@ import { sync } from 'vuex-router-sync'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import moment from 'moment'
+import MultiFiltersPlugin from './plugins/MultiFilters'
+import './plugins/vuetify'
 
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
+Vue.use(MultiFiltersPlugin)
 
 sync(store, router)
 
