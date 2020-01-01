@@ -27,19 +27,12 @@ import EditFeeding from './views/edit/EditFeeding'
 import EditBookkeeping from './views/edit/EditBookkeeping'
 import EditHive from './views/edit/EditHive'
 
-import TestingFilter from './views/TestingFilter'
-
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    {
-      path: '/testingFilter',
-      name: 'testingFilter',
-      component: TestingFilter
-    },
     {
       path: '/',
       name: 'login',
