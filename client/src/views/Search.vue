@@ -68,25 +68,6 @@
               {{ header.text }}
             </th>
           </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>some thing</td>
-            <td>asd</td>
-            <td>asd</td>
-            <td>asd</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
         </template>
         <template slot="items" slot-scope="props">
           <tr>

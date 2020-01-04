@@ -1,40 +1,26 @@
 <template>
   <div class="feedings-component">
     <h2>Söötmised</h2>
-    <v-layout row wrap>
-      <v-flex xs12>
-        <v-data-table
-          :headers="headers"
-          :items="feedings"
-          :pagination.sync="pagination"
-          select-all
-          item-key="date"
-          class="elevation-1"
-          :inspections-per-page-items="[-1]"
-          :hide-actions=true
-          :search="filters"
-          :custom-filter="customFilter"
-        >
-          <template slot="headers" slot-scope="props">
-            <tr>
-              <th
-                v-for="header in props.headers"
-                :key="header.text"
-              >
-                {{ header.text }}
-              </th>
-            </tr>
-          </template>
-          <template slot="items" slot-scope="props">
-            <tr>
-              <td>{{ props.item.date | formatDate }}</td>
-              <td>{{ props.item.type }}</td>
-              <td>{{ props.item.amount }}</td>
-            </tr>
-          </template>
-        </v-data-table>
-      </v-flex>
-    </v-layout>
+    <table>
+      <thead>
+        <tr>
+          <th>Kuupäev</th>
+          <th>Tüüp</th>
+          <th>Kogus</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="feeding in feedings" :key="feeding.id">
+          <td>{{ feeding.date | formatDate }}</td>
+          <td>{{ feeding.type }}</td>
+          <td>{{ feeding.amount }}</td>
+          <td><router-link :to="`/hives/${hive.id}/feedings/${feeding.id}/edit`"><b-button>Muuda</b-button></router-link></td>
+          <td><router-link :to="``"><b-button>Kustuta</b-button></router-link></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -47,24 +33,7 @@ export default {
   data () {
     return {
       hive: {},
-      feedings: [],
-      pagination: {
-        sortBy: 'date'
-      },
-      headers: [
-        {
-          text: 'Kuupäev',
-          value: 'kuupaev'
-        },
-        {
-          text: 'Tüüp',
-          value: 'tuup'
-        },
-        {
-          text: 'Kogus',
-          value: 'kogus'
-        }
-      ]
+      feedings: []
     }
   },
   computed: {
@@ -86,4 +55,18 @@ export default {
 </script>
 
 <style scoped>
+  table {
+    width: 100%
+  }
+  td, th {
+    padding: 10px;
+    border-bottom: 1px solid darkgrey
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  button {
+    background-color: black;
+  }
 </style>

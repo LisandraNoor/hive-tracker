@@ -1,6 +1,7 @@
 <template>
   <div class="book-keeping-component">
     <h2>Raamatupidamised</h2>
+    <router-link :to="`/bookkeepings/addbookkeeping`"><b-button id="addBookkeeping" variant="dark">+ Lisa uus</b-button></router-link>
     <v-layout row wrap>
       <v-flex xs3>
         <v-menu
@@ -80,8 +81,12 @@
             </tr>
           </template>
         </v-data-table>
-        <p>Kokku:</p>
-        <p>{{ incomesTotal - outcomesTotal }}€</p>
+        <table id="summary-table">
+          <tr>
+            <td id="title">Kokku:</td>
+            <td id="total">{{ incomesTotal - outcomesTotal }}€</td>
+          </tr>
+        </table>
       </v-flex>
     </v-layout>
   </div>
@@ -100,6 +105,7 @@ export default {
       endDate: null,
       dates: [],
       bookkeepings: [],
+      bookkeeping: {},
       filters: {
         startDate: null,
         endDate: null
@@ -229,4 +235,26 @@ export default {
 </script>
 
 <style scoped>
+  #summary-table {
+    width: 100%;
+  }
+  #summary-table td {
+    padding: 15px;
+    padding-left: 10%;
+    padding-right: 8%;
+    border-bottom: 1px lightgray solid;
+  }
+  #title {
+    text-align: left;
+  }
+  #total {
+    text-align: right;
+    margin-right: 20px;
+  }
+  a {
+   position: absolute;
+   margin-top: 10px;
+   float: right;
+   right: 10%;
+ }
 </style>

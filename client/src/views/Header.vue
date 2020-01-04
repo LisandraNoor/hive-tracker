@@ -7,6 +7,8 @@
       <router-link :to="`/hives`" v-if="$store.state.isUserLoggedIn">
         <b-navbar-brand>HiveTracker</b-navbar-brand>
       </router-link>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-collapse id="nav-collapse" is-nav>
       <router-link :to="`/hives`">
         <b-button
           variant="warning"
@@ -16,7 +18,7 @@
           v-if="$store.state.isUserLoggedIn"
           >Tarud
         </b-button>
-      </router-link>
+      </router-link><br>
       <router-link :to="`/honeycollections`">
         <b-button
           variant="warning"
@@ -26,7 +28,7 @@
           v-if="$store.state.isUserLoggedIn"
           >Mee võtmised
         </b-button>
-      </router-link>
+      </router-link><br>
       <router-link :to="`/bookkeepings`">
         <b-button
           variant="warning"
@@ -36,7 +38,7 @@
           v-if="$store.state.isUserLoggedIn"
           >Raamatupidamine
         </b-button>
-      </router-link>
+      </router-link><br>
       <router-link :to="`/feedings`">
         <b-button
           variant="warning"
@@ -46,7 +48,7 @@
           v-if="$store.state.isUserLoggedIn"
           >Söötmised
         </b-button>
-      </router-link>
+      </router-link><br>
       <router-link :to="`/treatments`">
         <b-button
           variant="warning"
@@ -56,7 +58,7 @@
           v-if="$store.state.isUserLoggedIn"
           >Ravimised
         </b-button>
-      </router-link>
+      </router-link><br>
       <router-link :to="`/search`">
         <b-button
           variant="warning"
@@ -100,6 +102,7 @@
           </b-button>
         </router-link>
       </b-navbar-nav>
+      </b-collapse>
     </b-navbar>
   </div>
 </template>
@@ -121,5 +124,8 @@ export default {
 <style scoped>
   div.navbar-brand {
     color: black;
+  }
+  span.navbar-toggler-icon {
+    background-color: black;
   }
 </style>

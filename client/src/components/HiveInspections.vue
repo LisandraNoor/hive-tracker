@@ -1,38 +1,11 @@
 <template>
   <div class="inspections-component">
     <h2>Ülevaatlused</h2>
-    <v-layout row wrap>
-      <v-flex xs12>
-        <v-data-table
-          :headers="headers"
-          :items="inspections"
-          :pagination.sync="pagination"
-          select-all
-          item-key="date"
-          class="elevation-1"
-          :inspections-per-page-items="[-1]"
-          :hide-actions=true
-          :search="filters"
-          :custom-filter="customFilter"
-        >
-          <template slot="headers" slot-scope="props">
-            <tr>
-              <th
-                v-for="header in props.headers"
-                :key="header.text"
-              >
-                {{ header.text }}
-              </th>
-            </tr>
-          </template>
-          <template slot="items" slot-scope="props">
-            <tr>
-              <td>{{ props.item.date | formatDate }}</td>
-            </tr>
-          </template>
-        </v-data-table>
-      </v-flex>
-    </v-layout>
+    <table v-for="inspection in inspections" :key="inspection.id">
+      <tr>
+        <td><router-link :to="`/hives/${hive.id}/inspections/${inspection.id}`" class="date">{{ inspection.date | formatDate }}</router-link></td>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -45,16 +18,7 @@ export default {
   data () {
     return {
       hive: {},
-      inspections: [],
-      pagination: {
-        sortBy: 'date'
-      },
-      headers: [
-        {
-          text: 'Kuupäev',
-          value: 'kuupaev'
-        }
-      ]
+      inspections: []
     }
   },
   computed: {
@@ -71,9 +35,26 @@ export default {
         hiveId: hiveId
       })).data
     }
+  },
+  methods: {
+    navigateToEdit () {
+      this.$router.push({ name: '/hives/:hiveId/inspections/:inspectionId/edit', params: { hiveId: this.hive.id, inspectionId: this.inspections.id } })
+    }
   }
 }
 </script>
 
 <style scoped>
+  table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  a.date {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+  }
+  td {
+    padding: 5px;
+  }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div class="honeycollections-component">
     <h2>Mee võtmised</h2>
+    <router-link :to="`/honeycollections/addhoneycollection`"><b-button id="addHoneyCollection" variant="dark">+ Lisa uus</b-button></router-link>
     <v-layout row wrap>
       <v-flex xs3>
         <v-menu
@@ -80,7 +81,6 @@
         </v-data-table>
       </v-flex>
     </v-layout>
-    <router-link :to="`/honeycollections/addhoneycollection`"><b-button id="addHoneyCollection" variant="dark">+</b-button></router-link>
   </div>
 </template>
 
@@ -196,4 +196,10 @@ export default {
 </script>
 
 <style scoped>
+ a {
+   position: absolute;
+   margin-top: 10px;
+   float: right;
+   right: 10%;
+ }
 </style>
