@@ -75,8 +75,7 @@
             <tr>
               <td>{{ props.item.date | formatDate }}</td>
               <td>{{ props.item.type }}</td>
-              <td>{{ props.item.name }}</td>
-              <td>{{ props.item.amount }}€</td>
+              <td>{{ props.item.amount }}</td>
             </tr>
           </template>
         </v-data-table>
@@ -116,10 +115,6 @@ export default {
         {
           text: 'Tüüp',
           value: 'tuup'
-        },
-        {
-          text: 'Nimetus',
-          value: 'nimetus'
         },
         {
           text: 'Kogus',

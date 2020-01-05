@@ -2,88 +2,88 @@
   <div class="inspection-component">
     <table>
       <tr>
-        <td>Kuupäev</td>
-        <td>{{ inspection.date | formatDate }}</td>
+        <td class="heading">Kuupäev:</td>
+        <td class="value">{{ inspection.date | formatDate }}</td>
       </tr>
       <tr>
-        <td>Mesilaste meeleolu</td>
-        <td>{{ inspection.attitude }}</td>
+        <td class="heading">Mesilaste meeleolu:</td>
+        <td class="value">{{ inspection.attitude }}</td>
       </tr>
       <tr>
-        <td>Pere tugevus</td>
-        <td>{{ inspection.strength }}</td>
+        <td class="heading">Pere tugevus:</td>
+        <td class="value">{{ inspection.strength }}</td>
       </tr>
       <tr>
-        <td>Sööda kogus</td>
-        <td>{{ inspection.feedAmount }}</td>
+        <td class="heading">Sööda kogus:</td>
+        <td class="value">{{ inspection.feedAmount }}</td>
       </tr>
       <tr>
-        <td>Kärgede katvus mesilastega</td>
-        <td>{{ inspection.frameCoverage }}</td>
+        <td class="heading">Kärgede katvus mesilastega:</td>
+        <td class="value">{{ inspection.frameCoverage }}</td>
       </tr>
       <tr>
-        <td>Ema olemasolu</td>
-        <td>{{ inspection.queen }}</td>
+        <td class="heading">Ema olemasolu:</td>
+        <td class="value">{{ inspection.queen }}</td>
       </tr>
       <tr>
-        <td>Ema värv</td>
-        <td>{{ inspection.queenColor }}</td>
+        <td class="heading">Ema värv:</td>
+        <td class="value">{{ inspection.queenColor }}</td>
       </tr>
       <tr>
-        <td>Traadiga kärjed</td>
-        <td>{{ inspection.stringFrame }}</td>
+        <td class="heading">Traadiga kärjed:</td>
+        <td class="value">{{ inspection.stringFrame }}</td>
       </tr>
       <tr>
-        <td>Põhjaga kärjed</td>
-        <td>{{ inspection.bottomFrame }}</td>
+        <td class="heading">Põhjaga kärjed:</td>
+        <td class="value">{{ inspection.bottomFrame }}</td>
       </tr>
       <tr>
-        <td>Ülesehitatud kärjed</td>
-        <td>{{ inspection.fullFrame }}</td>
+        <td class="heading">Ülesehitatud kärjed:</td>
+        <td class="value">{{ inspection.fullFrame }}</td>
       </tr>
       <tr>
-        <td>Eemaldatud kärjed</td>
-        <td>{{ inspection.removedFramed }}</td>
+        <td class="heading">Eemaldatud kärjed:</td>
+        <td class="value">{{ inspection.removedFramed }}</td>
       </tr>
       <tr>
-        <td>Kraadid</td>
-        <td>{{ inspection.degrees }}</td>
+        <td class="heading">Kraadid:</td>
+        <td class="value">{{ inspection.degrees }}</td>
       </tr>
       <tr>
-        <td>Ilm</td>
-        <td>{{ inspection.weather }}</td>
+        <td class="heading">Ilm:</td>
+        <td class="value">{{ inspection.weather }}</td>
       </tr>
       <tr>
-        <td>Munade olemasolu</td>
-        <td>{{ inspection.eggs }}</td>
+        <td class="heading">Munade olemasolu:</td>
+        <td class="value">{{ inspection.eggs }}</td>
       </tr>
       <tr>
-        <td>Munade kogus</td>
-        <td>{{ inspection.eggAmount }}</td>
+        <td class="heading">Munade kogus:</td>
+        <td class="value">{{ inspection.eggAmount }}</td>
       </tr>
       <tr>
-        <td>Haiguse nähtusi</td>
-        <td>{{ inspection.disease }}</td>
+        <td class="heading">Haiguse nähtusi:</td>
+        <td class="value">{{ inspection.disease }}</td>
       </tr>
       <tr>
-        <td>Haiguse tüüp</td>
-        <td>{{ inspection.diseaseType }}</td>
+        <td class="heading">Haiguse tüüp:</td>
+        <td class="value">{{ inspection.diseaseType }}</td>
       </tr>
       <tr>
-        <td>Vaklade olemasolu</td>
-        <td>{{ inspection.furros }}</td>
+        <td class="heading">Vaklade olemasolu:</td>
+        <td class="value">{{ inspection.furros }}</td>
       </tr>
       <tr>
-        <td>Vaklade kogus</td>
-        <td>{{ inspection.furrosAmount }}</td>
+        <td class="heading">Vaklade kogus:</td>
+        <td class="value">{{ inspection.furrosAmount }}</td>
       </tr>
       <tr>
-        <td>Haue olemasolu</td>
-        <td>{{ inspection.haue }}</td>
+        <td class="heading">Haue olemasolu:</td>
+        <td class="value">{{ inspection.haue }}</td>
       </tr>
       <tr>
-        <td>Haudme kogus</td>
-        <td>{{ inspection.haueAmount }}</td>
+        <td class="heading">Haudme kogus:</td>
+        <td class="value">{{ inspection.haueAmount }}</td>
       </tr>
     </table>
     <router-link :to="`/hives/${hive.id}/inspections/${inspection.id}/edit`"><b-button>Muuda</b-button></router-link>
@@ -111,4 +111,21 @@ export default {
 </script>
 
 <style scoped>
+  button {
+    margin: 10px;
+    background-color: black;
+  }
+  table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  td {
+    padding: 5px;
+  }
+  .heading {
+    text-align: right;
+  }
+  .value {
+    text-align: left;
+  }
 </style>
