@@ -2,14 +2,6 @@
   <div class="add-feeding-component">
     <h2>Raamatupidamise muutmine</h2>
     <b-form @submit="onSubmit">
-      <b-form-group id="date" label="Kuupäev">
-        <date-picker
-          id="date"
-          v-model="bookkeeping.date"
-          format="DD/MM/YYYY"
-          required
-        ></date-picker>
-      </b-form-group>
 
       <b-form-group id="name" label="Nimetus">
         <b-form-input
@@ -46,14 +38,11 @@
 
 <script>
 import BookkeepingService from '@/services/BookkeepingService'
-import DatePicker from 'vue2-datepicker'
-import 'vue2-datepicker/index.css'
 
 export default {
   data () {
     return {
       bookkeeping: {
-        date: null,
         name: null,
         type: null,
         amount: null
@@ -64,9 +53,6 @@ export default {
         { value: 'Väljaminek', text: 'Väljaminek' }
       ]
     }
-  },
-  components: {
-    DatePicker
   },
   methods: {
     onSubmit () {

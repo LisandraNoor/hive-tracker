@@ -40,10 +40,10 @@ export default {
     padding-bottom: 60px;
     width: 150px;
     font-size: 24px;
-    background-color: #d37400;
-    border: 5px solid #995400;
+    background-color: #FFCC33 ;
+    border: 3px solid black;
     border-radius: 15px;
-    color: #251500;
+    color: black;
     margin: 15px;
   }
   div.hive, div.addNewHive {

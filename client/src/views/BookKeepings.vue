@@ -257,4 +257,7 @@ export default {
    float: right;
    right: 10%;
  }
+  div.flex.xs3 {
+    padding-left: 10px;
+  }
 </style>

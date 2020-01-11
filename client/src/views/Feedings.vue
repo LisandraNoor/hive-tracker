@@ -204,4 +204,7 @@ export default {
 </script>
 
 <style scoped>
+  div.flex.xs3 {
+    padding-left: 10px;
+  }
 </style>

@@ -1,13 +1,12 @@
 <template>
   <div class="treatments-component">
-    <h2>Raamatupidamised</h2>
+    <h2>Ravimised</h2>
     <table>
       <thead>
         <tr>
           <th>Kuupäev</th>
           <th>Tüüp</th>
           <th>Kogus</th>
-          <th></th>
           <th></th>
         </tr>
       </thead>
@@ -17,7 +16,6 @@
           <td>{{ treatment.type }}</td>
           <td>{{ treatment.amount }}</td>
           <td><router-link :to="`/hives/${hive.id}/treatments/${treatment.id}/edit`"><b-button>Muuda</b-button></router-link></td>
-          <td><router-link :to="``"><b-button>Kustuta</b-button></router-link></td>
         </tr>
       </tbody>
     </table>

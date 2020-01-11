@@ -8,7 +8,6 @@
           <th>Tüüp</th>
           <th>Kogus</th>
           <th></th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -17,7 +16,6 @@
           <td>{{ feeding.type }}</td>
           <td>{{ feeding.amount }}</td>
           <td><router-link :to="`/hives/${hive.id}/feedings/${feeding.id}/edit`"><b-button>Muuda</b-button></router-link></td>
-          <td><router-link :to="``"><b-button>Kustuta</b-button></router-link></td>
         </tr>
       </tbody>
     </table>

@@ -1,18 +1,17 @@
 <template>
   <div class="hive-details-component">
     <div>
-      <h2>{{ hive.name }}</h2>
+    <router-link :to="`/hives/${hive.id}/edit`"><h2>{{ hive.name }}</h2></router-link>
     </div>
-    <router-link :to="`/hives/${hive.id}/edit`"><b-button>Muuda</b-button></router-link>
-    <router-link :to="`/hives/${hive.id}/addinspection`"><b-button>Lisa ülevaatlus</b-button></router-link>
-    <router-link :to="`/hives/${hive.id}/addfeeding`"><b-button>Lisa söötmine</b-button></router-link>
-    <router-link :to="`/hives/${hive.id}/addtreatment`"><b-button>Lisa ravimine</b-button></router-link>
+    <router-link :to="`/hives/${hive.id}/addinspection`"><b-button>+ Ülevaatlus</b-button></router-link>
+    <router-link :to="`/hives/${hive.id}/addtreatment`"><b-button>+ Ravimine</b-button></router-link>
+    <router-link :to="`/hives/${hive.id}/addfeeding`"><b-button>+ Söötmine</b-button></router-link>
     <br>
-    <hive-feedings />
+    <hive-inspections />
     <br>
     <hive-treatments />
     <br>
-    <hive-inspections />
+    <hive-feedings />
   </div>
 </template>
 
@@ -44,5 +43,8 @@ export default {
   button {
     margin: 10px;
     background-color: black;
+  }
+  a {
+    color: black;
   }
 </style>

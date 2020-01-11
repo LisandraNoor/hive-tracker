@@ -377,9 +377,14 @@ export default {
   #summary-table {
     margin-top: 15px;
     width: 50%;
+    margin-left: auto;
+    margin-right: auto;
   }
   #summary-table td {
     padding: 10px;
     border-bottom: 1px lightgray solid;
+  }
+  div.flex.xs3 {
+    padding-left: 10px;
   }
 </style>

@@ -87,6 +87,7 @@
       </tr>
     </table>
     <router-link :to="`/hives/${hive.id}/inspections/${inspection.id}/edit`"><b-button>Muuda</b-button></router-link>
+    <b-button @click="nav">Tagasi</b-button>
   </div>
 </template>
 
@@ -106,6 +107,11 @@ export default {
     this.hive = (await HiveService.show(hiveId)).data
     const inspectionId = this.$store.state.route.params.inspectionId
     this.inspection = (await InspectionService.show(inspectionId)).data
+  },
+  methods: {
+    nav () {
+      this.$router.go(-1)
+    }
   }
 }
 </script>

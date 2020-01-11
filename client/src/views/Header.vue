@@ -122,7 +122,7 @@ export default {
 </script>
 
 <style scoped>
-  div.navbar-brand {
+  div.navbar-brand, div.navbar-brand:hover {
     color: black;
   }
   span.navbar-toggler-icon {

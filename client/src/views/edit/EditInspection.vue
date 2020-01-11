@@ -3,14 +3,6 @@
     <h2>Ülevaatluse muutmine</h2>
     <b-form @submit="onSubmit">
       <!--misc-->
-      <b-form-group id="date" label="Kuupäev">
-        <date-picker
-          id="date"
-          v-model="inspection.date"
-          format="DD/MM/YYYY"
-          required
-        ></date-picker>
-      </b-form-group>
 
       <b-form-group id="attitude" label="Mesilaste meeleolu">
         <b-form-select
@@ -179,8 +171,6 @@
 
 <script>
 import InspectionService from '@/services/InspectionService'
-import DatePicker from 'vue2-datepicker'
-import 'vue2-datepicker/index.css'
 
 export default {
   data () {
@@ -250,7 +240,6 @@ export default {
         { value: 'tugev', text: 'tugev' }
       ],
       inspection: {
-        date: null,
         attitude: null,
         strength: null,
         feedAmount: null,
@@ -280,9 +269,6 @@ export default {
         haueAmount: null
       }
     }
-  },
-  components: {
-    DatePicker
   },
   methods: {
     onSubmit () {

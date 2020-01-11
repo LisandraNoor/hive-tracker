@@ -2,14 +2,6 @@
   <div class="treatment-component">
     <h2>Ravimise muutmine</h2>
     <b-form @submit="onSubmit">
-      <b-form-group id="date" label="Kuupäev">
-        <date-picker
-          id="date"
-          v-model="treatment.date"
-          format="DD/MM/YYYY"
-          required
-        ></date-picker>
-      </b-form-group>
 
       <b-form-group id="type" label="Ravim">
         <b-form-select
@@ -36,14 +28,11 @@
 
 <script>
 import TreatmentService from '@/services/TreatmentService'
-import DatePicker from 'vue2-datepicker'
-import 'vue2-datepicker/index.css'
 
 export default {
   data () {
     return {
       treatment: {
-        date: null,
         type: null,
         amount: null
       },
@@ -53,9 +42,6 @@ export default {
         { value: 'ma ei tea', text: 'Pärast otsin' }
       ]
     }
-  },
-  components: {
-    DatePicker
   },
   methods: {
     onSubmit () {

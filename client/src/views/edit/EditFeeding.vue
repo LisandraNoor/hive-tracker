@@ -2,14 +2,6 @@
   <div class="add-feeding-component">
     <h2>Söötmise muutmine</h2>
     <b-form @submit="onSubmit">
-      <b-form-group id="date" label="Kuupäev">
-        <date-picker
-          id="date"
-          v-model="feeding.date"
-          format="DD/MM/YYYY"
-          required
-        ></date-picker>
-      </b-form-group>
 
       <b-form-group id="type" label="Sööda tüüp">
         <b-form-select
@@ -36,26 +28,20 @@
 
 <script>
 import FeedingService from '@/services/FeedingService'
-import DatePicker from 'vue2-datepicker'
-import 'vue2-datepicker/index.css'
 
 export default {
   data () {
     return {
       feeding: {
-        date: null,
         type: null,
         amount: null
       },
       types: [
         { value: null, text: 'Valige tüüp' },
-        { value: 'suhkrusiirup', text: 'Suhkrusiirup' },
-        { value: 'Pärmi asi', text: 'Pärmi asi' }
+        { value: 'Suhkrusiirup', text: 'Suhkrusiirup' },
+        { value: 'Pärm', text: 'Pärmi asi' }
       ]
     }
-  },
-  components: {
-    DatePicker
   },
   methods: {
     onSubmit () {

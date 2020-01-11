@@ -75,10 +75,16 @@
           <template slot="items" slot-scope="props">
             <tr>
               <td>{{ props.item.date | formatDate }}</td>
-              <td>{{ props.item.amount }}</td>
+              <td>{{ props.item.amount }} kg</td>
             </tr>
           </template>
         </v-data-table>
+        <table id="summary-table">
+          <tr>
+            <td id="title">Kokku:</td>
+            <td id="total">{{ totalHoney }} kg</td>
+          </tr>
+        </table>
       </v-flex>
     </v-layout>
   </div>
@@ -120,7 +126,16 @@ export default {
     ...mapState([
       'isUserLoggedIn',
       'user'
-    ])
+    ]),
+    totalHoney () {
+      let totalhoney = []
+      Object.entries(this.honeycollections).forEach(([key, val]) => {
+        totalhoney.push(val.amount)
+      })
+      return totalhoney.reduce(function (totalhoney, num) {
+        return totalhoney + num
+      }, 0)
+    }
   },
   async mounted () {
     if (this.isUserLoggedIn) {
@@ -202,4 +217,23 @@ export default {
    float: right;
    right: 10%;
  }
+ #summary-table {
+    width: 100%;
+  }
+  #summary-table td {
+    padding: 15px;
+    padding-left: 10%;
+    padding-right: 19%;
+    border-bottom: 1px lightgray solid;
+  }
+  #title {
+    text-align: left;
+  }
+  #total {
+    text-align: right;
+    margin-right: 20px;
+  }
+  div.flex.xs3 {
+    padding-left: 10px;
+  }
 </style>
