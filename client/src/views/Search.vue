@@ -50,7 +50,6 @@
       <v-data-table
         :headers="headers1"
         :items="inspections"
-        :pagination.sync="pagination"
         select-all
         item-key="date"
         class="elevation-1"
@@ -90,7 +89,6 @@
       <v-data-table
         :headers="headers2"
         :items="inspections"
-        :pagination.sync="pagination"
         select-all
         item-key="date"
         class="elevation-1"
@@ -111,7 +109,7 @@
         </template>
         <template slot="items" slot-scope="props">
           <tr>
-            <td>{{ props.item.degrees }}</td>
+            <td>{{ props.item.degrees }}°</td>
             <td>{{ props.item.weather }}</td>
             <td>{{ props.item.eggs }}
             <td>{{ props.item.eggAmount }}</td>
@@ -125,20 +123,6 @@
         </template>
       </v-data-table>
     </v-flex>
-    <table id="summary-table">
-      <tr>
-        <td>Traadiga raame</td>
-        <td>Põhjaga raame</td>
-        <td>Täis raamid</td>
-        <td>Eemaldatud raamid</td>
-      </tr>
-      <tr>
-        <td>{{ stringFrameTotal }}</td>
-        <td>{{ bottomFrameTotal }}</td>
-        <td>{{ fullFrameTotal }}</td>
-        <td>{{ removedFrameTotal }}</td>
-      </tr>
-    </table>
   </v-layout>
 </template>
 
@@ -256,43 +240,7 @@ export default {
     ...mapState([
       'isUserLoggedIn',
       'user'
-    ]),
-    stringFrameTotal () {
-      let stringFrames = []
-      Object.entries(this.inspections).forEach(([key, val]) => {
-        stringFrames.push(val.stringFrame)
-      })
-      return stringFrames.reduce(function (stringFrames, num) {
-        return stringFrames + num
-      }, 0)
-    },
-    bottomFrameTotal () {
-      let bottomFrames = []
-      Object.entries(this.inspections).forEach(([key, val]) => {
-        bottomFrames.push(val.bottomFrame)
-      })
-      return bottomFrames.reduce(function (bottomFrames, num) {
-        return bottomFrames + num
-      }, 0)
-    },
-    fullFrameTotal () {
-      let fullFrames = []
-      Object.entries(this.inspections).forEach(([key, val]) => {
-        fullFrames.push(val.fullFrame)
-      })
-      return fullFrames.reduce(function (fullFrames, num) {
-        return fullFrames + num
-      }, 0)
-    },
-    removedFrameTotal () {
-      let removedFrames = []
-      Object.entries(this.inspections).forEach(([key, val]) => {
-        removedFrames.push(val.removedFramed)
-      })
-      return removedFrames.reduce(function (removedFrames, num) {
-        return removedFrames + num
-      }, 0)
-    }
+    ])
   },
   async mounted () {
     if (this.isUserLoggedIn) {

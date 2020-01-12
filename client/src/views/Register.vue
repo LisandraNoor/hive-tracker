@@ -11,7 +11,7 @@
           required
         ></b-form-input>
       </b-form-group>
-      <b-form-group label="Password:">
+      <b-form-group label="Parool:">
         <b-form-input
           name="password"
           id="password"
@@ -21,7 +21,7 @@
         ></b-form-input>
       </b-form-group>
       <div class="error" v-html="error"/>
-      <b-button variant="info" @click="register">Register</b-button>
+      <b-button variant="warning" @click="register">Register</b-button>
     </b-form>
   </div>
 </template>

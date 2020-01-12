@@ -50,7 +50,6 @@
           id="queenColor"
           v-model="inspection.queenColor"
           :options="queenColors"
-          required
         ></b-form-select>
       </b-form-group>
       <!--frames-->
@@ -104,7 +103,6 @@
           id="weather"
           v-model="inspection.weather"
           :options="weathers"
-          required
         ></b-form-select>
       </b-form-group>
       <!--eggs-->
@@ -118,7 +116,6 @@
           id="eggAmount"
           v-model="inspection.eggAmount"
           :options="eggAmounts"
-          required
         ></b-form-select>
       </b-form-group>
       <!--disease-->
@@ -132,7 +129,6 @@
           id="diseaseType"
           v-model="inspection.diseaseType"
           :options="diseaseTypes"
-          required
         ></b-form-select>
       </b-form-group>
       <!--furros-->
@@ -146,7 +142,6 @@
           id="furrosAmount"
           v-model="inspection.furrosAmount"
           :options="furrosAmounts"
-          required
         ></b-form-select>
       </b-form-group>
       <!--haue-->
@@ -160,7 +155,6 @@
           id="haueAmount"
           v-model="inspection.haueAmount"
           :options="haueAmounts"
-          required
         ></b-form-select>
       </b-form-group>
 

@@ -14,7 +14,7 @@
         <tr v-for="treatment in treatments" :key="treatment.id">
           <td>{{ treatment.date | formatDate }}</td>
           <td>{{ treatment.type }}</td>
-          <td>{{ treatment.amount }}</td>
+          <td>{{ treatment.amount }} ml</td>
           <td><router-link :to="`/hives/${hive.id}/treatments/${treatment.id}/edit`"><b-button>Muuda</b-button></router-link></td>
         </tr>
       </tbody>

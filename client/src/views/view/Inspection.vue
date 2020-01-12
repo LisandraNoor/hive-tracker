@@ -47,7 +47,7 @@
       </tr>
       <tr>
         <td class="heading">Kraadid:</td>
-        <td class="value">{{ inspection.degrees }}</td>
+        <td class="value">{{ inspection.degrees }}°</td>
       </tr>
       <tr>
         <td class="heading">Ilm:</td>

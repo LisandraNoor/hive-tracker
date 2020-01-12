@@ -14,7 +14,7 @@
         <tr v-for="feeding in feedings" :key="feeding.id">
           <td>{{ feeding.date | formatDate }}</td>
           <td>{{ feeding.type }}</td>
-          <td>{{ feeding.amount }}</td>
+          <td>{{ feeding.amount }} l</td>
           <td><router-link :to="`/hives/${hive.id}/feedings/${feeding.id}/edit`"><b-button>Muuda</b-button></router-link></td>
         </tr>
       </tbody>

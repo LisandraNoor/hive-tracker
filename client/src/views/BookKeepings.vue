@@ -53,7 +53,6 @@
         <v-data-table
           :headers="headers"
           :items="bookkeepings"
-          :pagination.sync="pagination"
           select-all
           item-key="date"
           class="elevation-1"
@@ -141,7 +140,7 @@ export default {
     incomesTotal () {
       let incomes = []
       Object.entries(this.bookkeepings).forEach(([key, val]) => {
-        if (val.type === 'sissetulek') {
+        if (val.type === 'Sissetulek') {
           incomes.push(val.amount)
         }
       })
@@ -152,7 +151,7 @@ export default {
     outcomesTotal () {
       let outcomes = []
       Object.entries(this.bookkeepings).forEach(([key, val]) => {
-        if (val.type === 'valjaminek') {
+        if (val.type === 'Väljaminek') {
           outcomes.push(val.amount)
         }
       })
