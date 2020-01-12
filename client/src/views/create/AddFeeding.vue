@@ -48,7 +48,8 @@ export default {
         types: [
           { value: null, text: 'Valige tüüp' },
           { value: 'Suhkrusiirup', text: 'Suhkrusiirup' },
-          { value: 'Pärm', text: 'Pärmi asi' }
+          { value: 'Söödasiirup', text: 'Söödasiirup' },
+          { value: 'Pärmiga sööt', text: 'Pärmiga sööt' }
         ],
         amount: null
       }

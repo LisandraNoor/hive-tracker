@@ -38,8 +38,12 @@ export default {
       },
       types: [
         { value: null, text: 'Valige tüüp' },
-        { value: 'oblikhape', text: 'Oblikhape' },
-        { value: 'ma ei tea', text: 'Pärast otsin' }
+        { value: 'Oblikhape 0.75% suhkruga', text: 'Oblikhape 0.75% suhkruga' },
+        { value: 'Oblikhape 0.5% vesilahus', text: 'Oblikhape 0.5% vesilahus' },
+        { value: 'Oblikhape aurutamine', text: 'Oblikhape aurutamine' },
+        { value: 'Sipelghape', text: 'Sipelghape' },
+        { value: 'Bienenwohl', text: 'Bienenwohl' },
+        { value: 'Piimhape', text: 'Piimhape' }
       ]
     }
   },

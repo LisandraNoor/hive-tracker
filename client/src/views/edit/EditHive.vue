@@ -36,8 +36,8 @@ export default {
       },
       types: [
         { value: '', text: 'Valige tüüp' },
-        { value: 'downhive', text: 'Lamavtaru' },
-        { value: 'uphive', text: 'Püsttaru' }
+        { value: 'Eesti lamavtaru', text: 'Eesti lamavtaru' },
+        { value: 'Langstroth korpustaru', text: 'Langstroth korpustaru' }
       ]
     }
   },

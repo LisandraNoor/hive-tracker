@@ -177,20 +177,20 @@ export default {
     return {
       attitudes: [
         { value: null, text: 'Valige tüüp' },
-        { value: 'rahulikud', text: 'rahulikud' },
-        { value: 'tigedad', text: 'tigedad' }
+        { value: 'Rahulikud', text: 'Rahulikud' },
+        { value: 'Tigedad', text: 'Tigedad' }
       ],
       feedAmounts: [
         { value: null, text: 'Valige kogus' },
-        { value: 'madal', text: 'madal' },
-        { value: 'keskmine', text: 'keskmine' },
-        { value: 'kõrge', text: 'kõrge' }
+        { value: 'Madal', text: 'Madal' },
+        { value: 'Keskmine', text: 'Keskmine' },
+        { value: 'Kõrge', text: 'Kõrge' }
       ],
       frameCoverages: [
         { value: null, text: 'Valige tüüp' },
-        { value: 'madal', text: 'madal' },
-        { value: 'keskmine', text: 'keskmine' },
-        { value: 'kõrge', text: 'kõrge' }
+        { value: 'Madal', text: 'Madal' },
+        { value: 'Keskmine', text: 'Keskmine' },
+        { value: 'Kõrge', text: 'Kõrge' }
       ],
       queenColors: [
         { value: null, text: 'Valige tüüp' },
@@ -211,33 +211,37 @@ export default {
       ],
       eggAmounts: [
         { value: null, text: 'Valige tüüp' },
-        { value: 'madal', text: 'madal' },
-        { value: 'keskmine', text: 'keskmine' },
-        { value: 'kõrge', text: 'kõrge' }
+        { value: 'Madal', text: 'Madal' },
+        { value: 'Keskmine', text: 'Keskmine' },
+        { value: 'Kõrge', text: 'Kõrge' }
       ],
       diseaseTypes: [
         { value: null, text: 'Valige tüüp' },
-        { value: 'Ameerika cancer', text: 'Ameerika cancer' },
+        { value: 'Ameerika haudmemädanik', text: 'Ameerika haudmemädanik' },
+        { value: 'Euroopa haudmemädanik', text: 'Euroopa haudmemädanik' },
+        { value: 'Varroatoos', text: 'Varroatoos' },
+        { value: 'Nosematoos', text: 'Nosematoos' },
+        { value: 'Väike tarumardikas', text: 'Väike tarumardikas' },
         { value: 'Lestad', text: 'Lestad' },
         { value: 'Hallitus', text: 'Hallitus' }
       ],
       furrosAmounts: [
         { value: null, text: 'Valige tüüp' },
-        { value: 'madal', text: 'madal' },
-        { value: 'keskmine', text: 'keskmine' },
-        { value: 'kõrge', text: 'kõrge' }
+        { value: 'Madal', text: 'Madal' },
+        { value: 'Keskmine', text: 'Keskmine' },
+        { value: 'Kõrge', text: 'Kõrge' }
       ],
       haueAmounts: [
         { value: null, text: 'Valige tüüp' },
-        { value: 'madal', text: 'madal' },
-        { value: 'keskmine', text: 'keskmine' },
-        { value: 'kõrge', text: 'kõrge' }
+        { value: 'Madal', text: 'Madal' },
+        { value: 'Keskmine', text: 'Keskmine' },
+        { value: 'Kõrge', text: 'Kõrge' }
       ],
       strengths: [
         { value: null, text: 'Valige tüüp' },
-        { value: 'nõrk', text: 'nõrk' },
-        { value: 'keskmine', text: 'keskmine' },
-        { value: 'tugev', text: 'tugev' }
+        { value: 'Nõrk', text: 'Nõrk' },
+        { value: 'Keskmine', text: 'Keskmine' },
+        { value: 'Tugev', text: 'Tugev' }
       ],
       inspection: {
         attitude: null,

@@ -180,29 +180,29 @@ export default {
         attitude: null,
         attitudes: [
           { value: null, text: 'Valige tüüp' },
-          { value: 'rahulikud', text: 'rahulikud' },
-          { value: 'tigedad', text: 'tigedad' }
+          { value: 'Rahulikud', text: 'Rahulikud' },
+          { value: 'Tigedad', text: 'Tigedad' }
         ],
         strength: null,
         strengths: [
           { value: null, text: 'Valige tüüp' },
-          { value: 'nõrk', text: 'nõrk' },
-          { value: 'keskmine', text: 'keskmine' },
-          { value: 'tugev', text: 'tugev' }
+          { value: 'Nõrk', text: 'Nõrk' },
+          { value: 'Keskmine', text: 'Keskmine' },
+          { value: 'Tugev', text: 'Tugev' }
         ],
         feedAmount: null,
         feedAmounts: [
           { value: null, text: 'Valige kogus' },
-          { value: 'madal', text: 'madal' },
-          { value: 'keskmine', text: 'keskmine' },
-          { value: 'kõrge', text: 'kõrge' }
+          { value: 'Madal', text: 'Madal' },
+          { value: 'Keskmine', text: 'Keskmine' },
+          { value: 'Kõrge', text: 'Kõrge' }
         ],
         frameCoverage: null,
         frameCoverages: [
           { value: null, text: 'Valige tüüp' },
-          { value: 'madal', text: 'madal' },
-          { value: 'keskmine', text: 'keskmine' },
-          { value: 'kõrge', text: 'kõrge' }
+          { value: 'Madal', text: 'Madal' },
+          { value: 'Keskmine', text: 'Keskmine' },
+          { value: 'Kõrge', text: 'Kõrge' }
         ],
         // queen
         queen: '', // Jah/ei radio button
@@ -237,16 +237,20 @@ export default {
         eggAmount: null,
         eggAmounts: [
           { value: null, text: 'Valige tüüp' },
-          { value: 'madal', text: 'madal' },
-          { value: 'keskmine', text: 'keskmine' },
-          { value: 'kõrge', text: 'kõrge' }
+          { value: 'Madal', text: 'Madal' },
+          { value: 'Keskmine', text: 'Keskmine' },
+          { value: 'Kõrge', text: 'Kõrge' }
         ],
         // disease
         disease: '', // Jah/ei radio button
         diseaseType: null,
         diseaseTypes: [
           { value: null, text: 'Valige tüüp' },
-          { value: 'Ameerika cancer', text: 'Ameerika cancer' },
+          { value: 'Ameerika haudmemädanik', text: 'Ameerika haudmemädanik' },
+          { value: 'Euroopa haudmemädanik', text: 'Euroopa haudmemädanik' },
+          { value: 'Varroatoos', text: 'Varroatoos' },
+          { value: 'Nosematoos', text: 'Nosematoos' },
+          { value: 'Väike tarumardikas', text: 'Väike tarumardikas' },
           { value: 'Lestad', text: 'Lestad' },
           { value: 'Hallitus', text: 'Hallitus' }
         ],
@@ -255,18 +259,18 @@ export default {
         furrosAmount: null,
         furrosAmounts: [
           { value: null, text: 'Valige tüüp' },
-          { value: 'madal', text: 'madal' },
-          { value: 'keskmine', text: 'keskmine' },
-          { value: 'kõrge', text: 'kõrge' }
+          { value: 'Madal', text: 'Madal' },
+          { value: 'Keskmine', text: 'Keskmine' },
+          { value: 'Kõrge', text: 'Kõrge' }
         ],
         // haue
         haue: '', // Jah/ei radio button
         haueAmount: null,
         haueAmounts: [
           { value: null, text: 'Valige tüüp' },
-          { value: 'madal', text: 'madal' },
-          { value: 'keskmine', text: 'keskmine' },
-          { value: 'kõrge', text: 'kõrge' }
+          { value: 'Madal', text: 'Madal' },
+          { value: 'Keskmine', text: 'Keskmine' },
+          { value: 'Kõrge', text: 'Kõrge' }
         ]
       }
     }

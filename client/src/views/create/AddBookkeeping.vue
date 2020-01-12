@@ -58,8 +58,8 @@ export default {
         type: null,
         types: [
           { value: null, text: 'Vali' },
-          { value: 'sissetulek', text: 'Sissetulek' },
-          { value: 'valjaminek', text: 'Väljaminek' }
+          { value: 'Sissetulek', text: 'Sissetulek' },
+          { value: 'Väljaminek', text: 'Väljaminek' }
         ],
         amount: null
       }
