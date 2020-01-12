@@ -75,7 +75,7 @@
             <tr>
               <td>{{ props.item.date | formatDate }}</td>
               <td>{{ props.item.type }}</td>
-              <td>{{ props.item.amount }}</td>
+              <td>{{ props.item.amount }} ml</td>
             </tr>
           </template>
         </v-data-table>
