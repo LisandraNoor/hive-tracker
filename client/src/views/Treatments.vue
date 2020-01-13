@@ -51,7 +51,7 @@
       <v-flex xs12>
         <v-data-table
           :headers="headers"
-          :items="treatments"
+          :items="treatments.slice().reverse()"
           :pagination.sync="pagination"
           select-all
           item-key="date"

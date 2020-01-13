@@ -52,7 +52,7 @@
       <v-flex xs12>
         <v-data-table
           :headers="headers"
-          :items="bookkeepings"
+          :items="bookkeepings.slice().reverse()"
           select-all
           item-key="date"
           class="elevation-1"
@@ -172,7 +172,6 @@ export default {
         if (startDate === null) return items
         return items.filter(item => {
           const inspectionStartDate = new Date(item.date).getTime()
-          console.log(inspectionStartDate)
           return inspectionStartDate >= startDate
         }, startDate)
       })

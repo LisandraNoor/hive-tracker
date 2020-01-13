@@ -19,7 +19,7 @@ export default {
     return {
       hive: {},
       inspections: [],
-      limit: 5,
+      limit: -5,
       showMore: false
     }
   },
@@ -29,6 +29,7 @@ export default {
       'user'
     ]),
     computedObj () {
+      var length = this.inspections.length
       return this.limit ? this.inspections.slice(0, this.limit) : this.inspections
     }
   },

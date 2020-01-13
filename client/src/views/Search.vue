@@ -49,7 +49,7 @@
     <v-flex xs12>
       <v-data-table
         :headers="headers1"
-        :items="inspections"
+        :items="inspections.slice().reverse()"
         select-all
         item-key="date"
         class="elevation-1"
